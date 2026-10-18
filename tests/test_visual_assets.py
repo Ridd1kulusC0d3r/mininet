@@ -63,3 +63,40 @@ def test_readme_visual_files():
     ]:
         assert rel in readme
         assert (ROOT / rel).is_file()
+
+def test_claroty_2026_palette():
+    """Valida os tokens oficiais, os SVGs e a identidade entre as páginas."""
+    portal = PAGE.read_text(encoding="utf-8")
+    design = (ROOT / "docs" / "IDENTIDADE-VISUAL.md").read_text(encoding="utf-8")
+    manual = (ROOT / "docs" / "manual.html").read_text(encoding="utf-8")
+    architecture = (ROOT / "docs" / "lab-architecture.html").read_text(encoding="utf-8")
+
+    assert "--claroty-pink:#E20AB7" in portal
+    assert "--claroty-purple:#8815FF" in portal
+    assert "--industrial-green:#7B953B" in portal
+
+    for path in [PAGE, ROOT / "docs" / "assets" / "mininet-hero.svg",
+                 ROOT / "docs" / "assets" / "mininet-banner.svg"]:
+        source = path.read_text(encoding="utf-8").upper()
+        assert "#E20AB7" in source, path
+        assert "#8815FF" in source, path
+        assert "#65EAD9" not in source, "Antiga paleta ciano ainda presente"
+        assert "#FFA76D" not in source, "Antiga paleta cobre ainda presente"
+
+    assert "--brand-pink:#E20AB7" in manual
+    assert "--mirror:#E20AB7" in architecture
+    assert "claroty-brand-guide-2026-external.pdf" in design
+    assert "sem reprodução" in design.lower() or "sem afiliação" in design.lower()
+
+
+def test_brand_contrast():
+    """O magenta primário precisa ser legível sobre a base escura."""
+    def luminance(hex_value):
+        channels = [int(hex_value[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+        linear = [c / 12.92 if c <= .04045 else ((c + .055) / 1.055) ** 2.4
+                  for c in channels]
+        return sum(k * v for k, v in zip((.2126, .7152, .0722), linear))
+
+    light = luminance("#E20AB7")
+    dark = luminance("#08060B")
+    assert (light + .05) / (dark + .05) >= 4.5
