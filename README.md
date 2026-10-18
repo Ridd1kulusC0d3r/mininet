@@ -10,6 +10,8 @@
 
 [**PORTAL VISUAL**](docs/index.html) · [**COMECE AQUI**](COMECE-AQUI.md) · [**MANUAL INTERATIVO**](docs/manual.html) · [**CENÁRIOS OT**](docs/OT-ROADMAP.md) · [**DESIGN SYSTEM**](docs/IDENTIDADE-VISUAL.md)
 
+<sub>Paleta cromática baseada nos códigos públicos do [Claroty Brand Identity Guidelines 2026](https://web-assets.claroty.com/brand-kit/claroty-brand-guide-2026-external.pdf). Projeto independente, sem afiliação com Claroty.</sub>
+
 </div>
 
 ---
