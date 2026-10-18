@@ -55,14 +55,17 @@ def run_case(spec: CaseSpec, mode: str = "sim",
     os.makedirs(out_dir, exist_ok=True)
     detector = ALL_DETECTORS[spec.detector]
 
+    # Modo real OT: cases baseados em Modbus já têm parser protocol-aware
+    # (lib/ot/protocols/modbus.py). OPC UA e detecção baseada em processo ainda
+    # dependem de parser OPC UA / simulador de processo (ver docs/OT-ROADMAP.md).
+    REAL_OT_READY = {"ot_recon", "modbus_unauth_write", "rogue_master", "ot_dos"}
     if mode in ("real", "mnsec") and spec.layer == "ot":
-        # Modo real OT exige extração protocol-aware (Modbus/OPC UA → evento),
-        # p.ex. Zeek/CISA ICSNPP sobre o pcap. É o próximo passo do roadmap
-        # (docs/OT-ROADMAP.md). Até lá, os cases OT validam-se em modo sim/pytest.
+        if spec.detector in REAL_OT_READY:
+            events = _run_ot_real(spec)
+            return _finish(spec, detector, events, out_dir, mode)
         raise RuntimeError(
-            f"{spec.case_id}: modo '{mode}' OT requer extração protocol-aware "
-            "(Zeek/ICSNPP). Suba a topologia com lib/ot/topology.py + "
-            "services/ e valide a detecção via modo sim/pytest por enquanto.")
+            f"{spec.case_id}: modo '{mode}' deste case requer parser OPC UA / "
+            "simulador de processo (roadmap). Valide via modo sim/pytest.")
 
     if mode == "mnsec":
         events = _run_mnsec(spec)
@@ -73,6 +76,12 @@ def run_case(spec: CaseSpec, mode: str = "sim",
             raise ValueError(f"{spec.case_id}: sem sim_trace para modo sim")
         events = spec.sim_trace()
 
+    return _finish(spec, detector, events, out_dir, mode)
+
+
+def _finish(spec: "CaseSpec", detector, events: list[dict],
+            out_dir: str, mode: str) -> Evidence:
+    """Roda o detector, sela a evidência, imprime e assere — comum a todos os modos."""
     findings = detector(events, spec.cfg)
     ev = Evidence(case=spec.case_id)
     for f in findings:
@@ -119,6 +128,50 @@ def _run_real(spec: CaseSpec) -> list[dict]:
         attacker.cmd(spec.attack_cmd)                    # ataque no sandbox
         sensor.cmd("pkill tcpdump")
         return read_pcap(pcap)
+    finally:
+        net.stop()
+
+
+def _run_ot_real(spec: CaseSpec) -> list[dict]:
+    """
+    Modo real OT (Modbus) — host Linux + root + Mininet (+ pymodbus/scapy).
+
+    1. build_otcell() sobe a célula OT com sensor em porta espelho.
+    2. o host `plc` executa services/modbus_server.py (datastore Modbus).
+    3. o `sensor` inicia tcpdump na interface espelhada.
+    4. baseline: HMI faz leituras legítimas; o `attacker` executa spec.attack_cmd.
+    5. captura é encerrada; lib/ot/sensor.read_pcap_ot normaliza o pcap em eventos.
+
+    Validado estruturalmente; a execução ao vivo precisa do host (não roda na nuvem).
+    """
+    import os as _os
+    from lib.ot.topology import build_otcell, OT
+    from lib.ot.sensor import read_pcap_ot
+
+    asset_map = {OT["plc"]["ip"].split("/")[0]: "plc1"}
+    net, nodes = build_otcell(mirror=True)
+    try:
+        plc, hmi = nodes["plc"], nodes["hmi"]
+        attacker, sensor = nodes["attacker"], nodes["sensor"]
+        _os.makedirs("out", exist_ok=True)
+        pcap = f"out/{spec.case_id}.pcap"
+        # serviço Modbus no PLC
+        plc.cmd("python3 services/modbus_server.py --host 0.0.0.0 --port 502 &")
+        plc.cmd("sleep 1")
+        # captura no sensor
+        sensor.cmd(f"tcpdump -i {sensor.defaultIntf()} -w {pcap} -U tcp port 502 &")
+        # baseline: HMI lê o PLC algumas vezes
+        hmi.cmd("python3 - <<'PY'\n"
+                "try:\n from pymodbus.client import ModbusTcpClient\n"
+                " c=ModbusTcpClient('10.20.0.20');c.connect()\n"
+                " [c.read_holding_registers(0,2) for _ in range(20)]\n c.close()\n"
+                "except Exception as e: print(e)\nPY")
+        # ataque isolado no namespace do atacante
+        attacker.cmd(spec.attack_cmd)
+        attacker.cmd("sleep 1")
+        sensor.cmd("pkill tcpdump")
+        plc.cmd("pkill -f modbus_server")
+        return read_pcap_ot(pcap, asset_map=asset_map)
     finally:
         net.stop()
 

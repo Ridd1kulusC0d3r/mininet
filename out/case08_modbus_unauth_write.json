@@ -1,7 +1,7 @@
 {
   "case": "case08_modbus_unauth_write",
-  "started_at": "2026-10-18T17:12:48Z",
-  "finished_at": "2026-10-18T17:12:48Z",
+  "started_at": "2026-10-18T17:22:34Z",
+  "finished_at": "2026-10-18T17:22:34Z",
   "host": "vm",
   "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
   "finding_count": 1,
@@ -27,9 +27,9 @@
         "critical_object": true,
         "maintenance_window": false
       },
-      "first_seen": "2026-10-18T17:12:48Z"
+      "first_seen": "2026-10-18T17:22:34Z"
     }
   ],
-  "sha256": "ab36712cdde534887abdc4bd0b447d4929225983598394e9b2e8333f741318ae",
+  "sha256": "d3f441dc6aafda1bb3a153fcb679042b4349efd17571e122646a2e60e93fa5cf",
   "schema": "mininet-sec-lab/evidence/1"
 }

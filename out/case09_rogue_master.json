@@ -1,7 +1,7 @@
 {
   "case": "case09_rogue_master",
-  "started_at": "2026-10-18T17:12:48Z",
-  "finished_at": "2026-10-18T17:12:48Z",
+  "started_at": "2026-10-18T17:22:34Z",
+  "finished_at": "2026-10-18T17:22:34Z",
   "host": "vm",
   "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
   "finding_count": 1,
@@ -27,9 +27,9 @@
           "10.20.0.11"
         ]
       },
-      "first_seen": "2026-10-18T17:12:48Z"
+      "first_seen": "2026-10-18T17:22:34Z"
     }
   ],
-  "sha256": "3bff114142f0e7d39aa737631bb2f0328ef2af5a4fc2343408c58b5ac4265ae5",
+  "sha256": "1d9c4edbff0860d0e9ed6020ebc1db781337efbfba455039dddc57c2df6f2fbf",
   "schema": "mininet-sec-lab/evidence/1"
 }

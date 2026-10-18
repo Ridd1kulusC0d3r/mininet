@@ -34,18 +34,23 @@ Próximos cases do roadmap (não implementados): S3 OT MitM, S5 PLC logic change
 (OpenPLC v4 + hash), S7 OPC UA security policy, S10 alarm suppression, S11 IT→OT
 pivot (purdue), S12 ICS deception (Conpot), S13 dataset replay (SWaT/BATADAL/HAI).
 
-## Próximo passo crítico: extração protocol-aware
+## Extração protocol-aware — estado atual
 
-Hoje os cases OT validam-se em **modo sim** (traces) e **pytest**. Para o
-**modo real no Mininet**, falta transformar o pcap em eventos OT normalizados
-(Modbus/OPC UA → `modbus`/`opcua`). Caminho recomendado:
+**Modbus/TCP: implementado e testado.** `lib/ot/protocols/modbus.py` é um parser
+byte-level (stdlib) que converte o payload Modbus/TCP em evento `modbus`;
+`lib/ot/sensor.py::read_pcap_ot` extrai esses payloads do pcap (scapy) e deriva
+inventário (`asset`). O loop `pcap → evento → detector` está coberto por
+`tests/test_ot_protocols.py` (parser, 7 testes) e `tests/test_ot_pcap_e2e.py`
+(ponta-a-ponta com pcap sintético). Por isso os cases **S1/S2/S4/S8** (Modbus)
+rodam em `--real/--mnsec` via `_run_ot_real` (sobe `otcell` + `services/modbus_server.py`).
+
+**Pendente:** OPC UA (S6) e detecção baseada em processo (S9) precisam de parser
+OPC UA e de um simulador de processo — seguem em SKIP consciente no modo real.
+Para fidelidade maior sem reimplementar dissectors, o caminho alternativo é:
 
 ```
 pcap do sensor → Zeek + CISA ICSNPP → JSON → normalizador → detector
 ```
-
-Isso dá semântica industrial sem reimplementar dissectors. Até existir, o
-harness faz SKIP consciente dos cases OT em `--real/--mnsec`.
 
 ## Repositórios externos (referência — manter em external/, não copiar)
 
