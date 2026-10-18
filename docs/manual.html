@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual — mininet-sec-lab</title>
+<style>
+:root{
+  --bg:#f4f1ea; --ink:#23262b; --muted:#6b6459; --card:#fbfaf6; --line:#d8d2c4;
+  --accent:#b5531f; --accent2:#2f6f6a; --ok:#2e7d46; --crit:#b23b3b; --code:#f0ece2;
+  --top:#dcd6c8; --left:#b8b0a0; --right:#9c9484; --atop:#ffd27a; --aleft:#e0a94a; --aright:#c08f38;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14161a; --ink:#e7e4dc; --muted:#9a9488; --card:#1c1f25; --line:#30343c;
+  --accent:#e0824a; --accent2:#56b3ab; --ok:#55c07a; --crit:#ff7a6b; --code:#0f1115;
+  --top:#5a6170; --left:#3e434e; --right:#2c303a; --atop:#e0a94a; --aleft:#b07e2c; --aright:#7e5a1e;
+}}
+:root[data-theme="dark"]{
+  --bg:#14161a; --ink:#e7e4dc; --muted:#9a9488; --card:#1c1f25; --line:#30343c;
+  --accent:#e0824a; --accent2:#56b3ab; --ok:#55c07a; --crit:#ff7a6b; --code:#0f1115;
+  --top:#5a6170; --left:#3e434e; --right:#2c303a; --atop:#e0a94a; --aleft:#b07e2c; --aright:#7e5a1e;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.6;
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px 80px}
+header.hero{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;
+  padding:40px 16px;margin-bottom:0}
+header.hero .inner{max-width:960px;margin:0 auto}
+header.hero h1{margin:0 0 6px;font-size:30px;letter-spacing:-.01em}
+header.hero p{margin:0;opacity:.95;font-size:16px;max-width:60ch}
+.badge{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);
+  border-radius:999px;padding:3px 11px;font-size:12px;margin-top:12px;margin-right:6px}
+nav.toc{position:sticky;top:0;background:var(--bg);border-bottom:1px solid var(--line);
+  padding:10px 16px;z-index:50;overflow-x:auto;white-space:nowrap}
+nav.toc a{color:var(--muted);text-decoration:none;font-size:13px;margin-right:16px;font-weight:600}
+nav.toc a:hover{color:var(--accent)}
+h2{font-size:22px;margin:40px 0 4px;padding-top:14px;border-top:2px solid var(--line)}
+h2 .n{color:var(--accent);font-variant-numeric:tabular-nums}
+h3{font-size:16px;margin:22px 0 6px}
+section>p{color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.grid{grid-template-columns:1fr}}
+code{background:var(--code);padding:1.5px 6px;border-radius:5px;font-size:13.5px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+pre{background:var(--code);border:1px solid var(--line);border-radius:10px;padding:14px 16px;
+  overflow:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.5}
+.term{position:relative;background:#0e1013;color:#d6e2d9;border-radius:10px;border:1px solid #000;
+  padding:30px 16px 16px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px;overflow:auto}
+.term::before{content:"● ● ●";position:absolute;top:8px;left:12px;color:#5a5a5a;letter-spacing:2px;font-size:11px}
+.term .ok{color:#7fd69a}.term .cr{color:#ff8a7a}.term .dim{color:#8a93a0}.term .hl{color:#ffd27a}
+.mk{display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;
+  background:var(--accent);color:#fff;font-size:11px;font-weight:700;vertical-align:middle;margin:0 3px}
+.ann{list-style:none;padding:0;margin:10px 0 0}
+.ann li{display:flex;gap:10px;align-items:flex-start;margin:6px 0;font-size:14px}
+.tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:2px solid var(--line);margin:8px 0 0}
+.tabs button{background:none;border:none;border-bottom:3px solid transparent;color:var(--muted);
+  padding:8px 14px;font-size:14px;font-weight:600;cursor:pointer;margin-bottom:-2px}
+.tabs button.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tabpane{display:none;padding-top:10px}.tabpane.active{display:block}
+table{border-collapse:collapse;width:100%;font-size:13.5px;margin:10px 0}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--code)}
+.pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11.5px;font-weight:700}
+.pill.ok{background:rgba(46,125,70,.15);color:var(--ok)}
+.pill.cr{background:rgba(178,59,59,.15);color:var(--crit)}
+.note{border-left:4px solid var(--accent2);background:var(--card);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0}
+.warn{border-left:4px solid var(--crit)}
+.glos dt{font-weight:700;margin-top:10px}.glos dd{margin:0 0 4px;color:var(--muted)}
+svg{max-width:100%;height:auto}
+.step{counter-increment:st;position:relative;padding-left:40px;margin:16px 0}
+.step::before{content:counter(st);position:absolute;left:0;top:-2px;width:28px;height:28px;border-radius:50%;
+  background:var(--accent);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+.steps{counter-reset:st}
+kbd{background:var(--code);border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:1px 6px;font-size:12px;font-family:ui-monospace,monospace}
+.themebtn{position:fixed;bottom:16px;right:16px;background:var(--card);border:1px solid var(--line);
+  border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;color:var(--ink);z-index:60}
+</style>
+</head>
+<body>
+<header class="hero"><div class="inner">
+  <h1>mininet-sec-lab</h1>
+  <p>Cases de teste de cybersecurity para Mininet / Mininet-Sec, com foco em engenharia de detecção. Ataque isolado no sandbox → detector → evidência selada.</p>
+  <div>
+    <span class="badge">6 cases</span>
+    <span class="badge">6 detectores</span>
+    <span class="badge">17 testes verdes</span>
+    <span class="badge">evidência SHA-256</span>
+    <span class="badge">suplemento ao Mininet-Sec 1.2.0</span>
+  </div>
+</div></header>
+
+<nav class="toc">
+  <a href="#comece">1 · Comece aqui</a>
+  <a href="#funciona">2 · Como funciona</a>
+  <a href="#instalar">3 · Instalação</a>
+  <a href="#uso">4 · Uso guiado</a>
+  <a href="#arquitetura">5 · Arquitetura</a>
+  <a href="#relatorios">6 · Relatórios</a>
+  <a href="#problemas">7 · Problemas</a>
+  <a href="#glossario">8 · Glossário</a>
+  <a href="#tecnica">9 · Técnica</a>
+</nav>
+
+<div class="wrap">
+
+<!-- 1 -->
+<section id="comece">
+<h2><span class="n">1.</span> Comece aqui — uma ação por vez</h2>
+<p>Não precisa instalar nada para ver funcionando. Se tiver Python 3, você roda os cases em segundos.</p>
+<div class="steps">
+  <div class="step"><b>Veja rodando agora.</b> Dois cliques em <code>launchers/run-linux.sh</code> (Linux/macOS) ou <code>launchers/run-windows.bat</code> (Windows). Ou no terminal: <code>python3 cases/runner.py</code>. Esperado: <span class="pill ok">6/6 PASS</span></div>
+  <div class="step"><b>Rode a suíte de testes.</b> <code>python3 -m pytest tests/ -q</code> → <span class="pill ok">17 passed</span></div>
+  <div class="step"><b>Entenda.</b> Leia a seção <a href="#funciona">Como funciona</a> e abra <code>docs/lab-architecture.html</code>.</div>
+  <div class="step"><b>Rode de verdade (opcional).</b> Num Linux com root: <code>sudo python3 cases/runner.py --mnsec</code>. Veja <a href="#instalar">Instalação</a>.</div>
+</div>
+<div class="note">💡 <b>Modo sim × modo real.</b> Tudo roda em "modo sim" (tráfego sintético) em qualquer computador, sem root. O "modo real" sobe a rede no Mininet e só funciona em Linux com privilégio de root.</div>
+</section>
+
+<!-- 2 -->
+<section id="funciona">
+<h2><span class="n">2.</span> Como funciona</h2>
+<p>A ideia central: cada <b>detector</b> é uma <b>função pura</b> que recebe uma lista de eventos de rede e devolve achados (<i>findings</i>). O mesmo detector é testado com eventos sintéticos (aqui, na nuvem) e usado com captura real no Mininet. O pcap vira evento, o evento vira achado, o achado vira evidência selada.</p>
+<div class="card">
+<svg viewBox="0 0 900 150" role="img" aria-label="Fluxo sensor para evidência">
+  <defs><marker id="ar" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto">
+    <path d="M0,0 L7,3 L0,6 Z" fill="var(--accent)"/></marker></defs>
+  <g font-family="ui-sans-serif" font-size="13" text-anchor="middle">
+    <g>
+      <rect x="10"  y="45" width="140" height="58" rx="10" fill="var(--card)" stroke="var(--line)"/>
+      <text x="80" y="70" font-weight="700" fill="var(--ink)">Captura</text>
+      <text x="80" y="88" fill="var(--muted)" font-size="11">sensor / pcap</text>
+    </g>
+    <line x1="152" y1="74" x2="188" y2="74" stroke="var(--accent)" stroke-width="2" marker-end="url(#ar)"/>
+    <g>
+      <rect x="190" y="45" width="140" height="58" rx="10" fill="var(--card)" stroke="var(--line)"/>
+      <text x="260" y="70" font-weight="700" fill="var(--ink)">Evento</text>
+      <text x="260" y="88" fill="var(--muted)" font-size="11">arp/tcp/dns/…</text>
+    </g>
+    <line x1="332" y1="74" x2="368" y2="74" stroke="var(--accent)" stroke-width="2" marker-end="url(#ar)"/>
+    <g>
+      <rect x="370" y="45" width="150" height="58" rx="10" fill="var(--accent2)" stroke="var(--line)"/>
+      <text x="445" y="70" font-weight="700" fill="#fff">Detector</text>
+      <text x="445" y="88" fill="#eafffb" font-size="11">função pura</text>
+    </g>
+    <line x1="522" y1="74" x2="558" y2="74" stroke="var(--accent)" stroke-width="2" marker-end="url(#ar)"/>
+    <g>
+      <rect x="560" y="45" width="140" height="58" rx="10" fill="var(--card)" stroke="var(--line)"/>
+      <text x="630" y="70" font-weight="700" fill="var(--ink)">Finding</text>
+      <text x="630" y="88" fill="var(--muted)" font-size="11">ATT&amp;CK + sev</text>
+    </g>
+    <line x1="702" y1="74" x2="738" y2="74" stroke="var(--accent)" stroke-width="2" marker-end="url(#ar)"/>
+    <g>
+      <rect x="740" y="45" width="150" height="58" rx="10" fill="var(--card)" stroke="var(--accent)"/>
+      <text x="815" y="70" font-weight="700" fill="var(--ink)">Evidência</text>
+      <text x="815" y="88" fill="var(--muted)" font-size="11">selada SHA-256</text>
+    </g>
+  </g>
+</svg>
+</div>
+<p>Por que isso importa: a lógica de detecção fica <b>testável em qualquer lugar</b> (CI/nuvem, sem root) e, ao mesmo tempo, <b>reutilizável</b> no laboratório real. O detector é a única fonte de verdade; só muda de onde vêm os eventos.</p>
+</section>
+
+<!-- 3 -->
+<section id="instalar">
+<h2><span class="n">3.</span> Instalação passo a passo</h2>
+<p>Escolha seu sistema. Para só ver os cases (modo sim), basta Python 3 — pule para a aba <b>Qualquer SO</b>.</p>
+<div class="tabs" role="tablist">
+  <button class="active" data-tab="any">Qualquer SO (modo sim)</button>
+  <button data-tab="ubuntu">Ubuntu/Debian</button>
+  <button data-tab="docker">Docker (Mininet-Sec)</button>
+  <button data-tab="wsl">Windows (WSL2)</button>
+</div>
+
+<div class="tabpane active" id="any">
+  <p>Só precisa de Python 3.10+. Nada de root.</p>
+  <pre># 1. clonar
+git clone https://github.com/Ridd1kulusC0d3r/mininet.git
+cd mininet
+
+# 2. (opcional) instalar pytest
+python3 -m pip install pytest
+
+# 3. rodar
+python3 cases/runner.py        # 6 cases, modo sim
+python3 -m pytest tests/ -q    # suíte de detecção</pre>
+  <div class="note">No Windows, dois cliques em <code>launchers\run-windows.bat</code> fazem os passos 2 e 3.</div>
+</div>
+
+<div class="tabpane" id="ubuntu">
+  <p>Para o <b>modo real</b> (Mininet puro). Requer root.</p>
+  <pre>sudo apt update
+sudo apt install -y mininet tcpdump python3-pip
+# ferramentas de ataque dos cases (referência):
+sudo apt install -y dsniff hping3 nmap hydra dnsmasq
+python3 -m pip install scapy          # ler pcap
+
+sudo python3 cases/runner.py --real</pre>
+</div>
+
+<div class="tabpane" id="docker">
+  <p>Para o <b>modo Mininet-Sec nativo</b> (NetworkTAP + captura embutida). Recomendado.</p>
+  <pre>docker pull hackinsdn/mininet-sec
+docker run --rm -it --privileged -v /lib/modules:/lib/modules \
+  hackinsdn/mininet-sec /bin/bash
+
+# dentro do container:
+git clone https://github.com/Ridd1kulusC0d3r/mininet.git && cd mininet
+python3 -m pip install scapy
+python3 cases/runner.py --mnsec</pre>
+  <div class="note">Projeto Mininet-Sec: <code>github.com/mininet-sec/mininet-sec</code> (tag 1.2.0).</div>
+</div>
+
+<div class="tabpane" id="wsl">
+  <p>Windows não roda Mininet nativamente. Use <b>WSL2</b> com Ubuntu e siga a aba Ubuntu/Debian.</p>
+  <pre># no PowerShell (admin):
+wsl --install -d Ubuntu
+# reinicie, abra "Ubuntu", e dentro dele siga a aba Ubuntu/Debian.</pre>
+  <div class="note warn">⚠️ O modo sim (<code>python3 cases/runner.py</code> e <code>pytest</code>) roda no Windows puro sem WSL. Só o modo real/mnsec exige Linux.</div>
+</div>
+</section>
+
+<!-- 4 -->
+<section id="uso">
+<h2><span class="n">4.</span> Uso guiado</h2>
+<p>Rodando <code>python3 cases/runner.py</code> você vê cada case passar. Veja a saída real, anotada:</p>
+<div class="term">
+<span class="dim">$ python3 cases/runner.py</span>
+
+=== mininet-sec-lab | modo sim | 6 case(s) ===
+
+<span class="ok">[PASS]</span> case01_arp_spoof — ARP spoofing contra o gateway (MITM)         <span class="mk">1</span>
+        técnica T1557.002 | modo sim | findings=1 | sev=<span class="cr">critical</span> | sha256=289004d20c2a…   <span class="mk">2</span>
+        → Conflito de binding ARP para 10.0.0.1 (2 MACs) [GATEWAY]   <span class="mk">3</span>
+<span class="ok">[PASS]</span> case02_rogue_dhcp — Servidor DHCP malicioso (MITM por DHCP)
+<span class="ok">[PASS]</span> case03_syn_flood — SYN flood contra o servidor (DoS)
+<span class="ok">[PASS]</span> case04_port_scan — Varredura de portas (reconhecimento)
+<span class="ok">[PASS]</span> case05_ssh_bruteforce — Brute force de SSH
+<span class="ok">[PASS]</span> case06_dns_spoof — DNS spoofing / corrida de resposta
+
+=== <span class="hl">6/6 PASS</span> | resumo em out/runner_summary.json ===            <span class="mk">4</span>
+</div>
+<ul class="ann">
+  <li><span class="mk">1</span> Nome do case e o cenário de ataque que ele exercita.</li>
+  <li><span class="mk">2</span> Técnica <b>MITRE ATT&CK</b>, severidade e o <b>hash</b> da evidência (prova de integridade).</li>
+  <li><span class="mk">3</span> O <i>finding</i>: o que o detector viu, em linguagem clara.</li>
+  <li><span class="mk">4</span> Placar final + arquivo de resumo gerado em <code>out/</code>.</li>
+</ul>
+
+<h3>Rodar um case só</h3>
+<pre>python3 cases/runner.py --case case03_syn_flood</pre>
+
+<h3>Os 6 cases</h3>
+<table>
+<tr><th>Case</th><th>Cenário</th><th>ATT&CK</th><th>Sinal de detecção</th></tr>
+<tr><td>C1</td><td>ARP spoofing / MITM</td><td>T1557.002</td><td>IP com &gt;1 MAC (pior se gateway)</td></tr>
+<tr><td>C2</td><td>Rogue DHCP</td><td>T1557</td><td>servidor fora da allowlist + gateway/DNS forjados</td></tr>
+<tr><td>C3</td><td>SYN flood / DDoS</td><td>T1499/T1498</td><td>pico de SYN/s + half-open; nº de origens</td></tr>
+<tr><td>C4</td><td>Port scan</td><td>T1046</td><td>1 origem → muitas portas/alvos</td></tr>
+<tr><td>C5</td><td>SSH brute force</td><td>T1110</td><td>rajada de falhas; sucesso após = comprometimento</td></tr>
+<tr><td>C6</td><td>DNS spoofing</td><td>T1557</td><td>respostas conflitantes para o mesmo nome</td></tr>
+</table>
+</section>
+
+<!-- 5 -->
+<section id="arquitetura">
+<h2><span class="n">5.</span> Arquitetura</h2>
+<p>O núcleo (<code>lib/</code>) é fixo; os backends de simulação são plugáveis. O sensor fica numa porta-espelho do switch e enxerga todo o segmento.</p>
+<div class="card">
+<svg viewBox="0 0 900 300" role="img" aria-label="Camadas da arquitetura">
+  <g font-family="ui-sans-serif" font-size="13">
+    <!-- camada simulação -->
+    <rect x="20" y="20" width="860" height="80" rx="10" fill="var(--card)" stroke="var(--line)"/>
+    <text x="34" y="40" font-weight="700" fill="var(--accent)">Simulação (plugável)</text>
+    <g text-anchor="middle" fill="var(--ink)">
+      <rect x="40"  y="52" width="150" height="36" rx="8" fill="var(--top)" stroke="var(--line)"/><text x="115" y="75">Mininet puro</text>
+      <rect x="210" y="52" width="180" height="36" rx="8" fill="var(--top)" stroke="var(--line)"/><text x="300" y="75">Mininet-Sec (TAP)</text>
+      <rect x="410" y="52" width="150" height="36" rx="8" fill="var(--top)" stroke="var(--line)"/><text x="485" y="75">traces sintéticos</text>
+      <rect x="580" y="52" width="270" height="36" rx="8" fill="var(--code)" stroke="var(--line)" stroke-dasharray="4 3"/><text x="715" y="75" fill="var(--muted)">futuro: OT, honeypot…</text>
+    </g>
+    <!-- seta -->
+    <text x="450" y="118" text-anchor="middle" fill="var(--muted)" font-size="18">↓ eventos normalizados ↓</text>
+    <!-- núcleo -->
+    <rect x="20" y="130" width="860" height="90" rx="10" fill="var(--card)" stroke="var(--accent2)"/>
+    <text x="34" y="150" font-weight="700" fill="var(--accent2)">Núcleo fixo — lib/</text>
+    <g text-anchor="middle" fill="#fff">
+      <rect x="40"  y="162" width="200" height="44" rx="8" fill="var(--accent2)"/><text x="140" y="183">detectores</text><text x="140" y="198" font-size="10">(funções puras)</text>
+      <rect x="260" y="162" width="160" height="44" rx="8" fill="var(--accent2)"/><text x="340" y="183">sensor</text><text x="340" y="198" font-size="10">pcap→evento</text>
+      <rect x="440" y="162" width="180" height="44" rx="8" fill="var(--accent2)"/><text x="530" y="183">evidência</text><text x="530" y="198" font-size="10">selada SHA-256</text>
+      <rect x="640" y="162" width="200" height="44" rx="8" fill="var(--accent2)"/><text x="740" y="183">traces/topo</text><text x="740" y="198" font-size="10">reutilizáveis</text>
+    </g>
+    <!-- saída -->
+    <rect x="20" y="248" width="860" height="40" rx="10" fill="var(--card)" stroke="var(--line)"/>
+    <text x="450" y="273" text-anchor="middle" fill="var(--ink)" font-weight="700">Saída: findings (MITRE ATT&amp;CK) + evidência JSON verificável em out/</text>
+  </g>
+</svg>
+</div>
+<p>Diagrama isométrico da topologia (vítima, servidor, atacante, gateway, sensor na porta-espelho): abra <code>docs/lab-architecture.html</code>.</p>
+</section>
+
+<!-- 6 -->
+<section id="relatorios">
+<h2><span class="n">6.</span> Geração de relatórios</h2>
+<p>Cada case grava uma <b>evidência selada</b> em <code>out/</code>. O hash cobre o corpo inteiro: qualquer alteração quebra a verificação — é cadeia de custódia leve.</p>
+<pre>{
+  "case": "case01_arp_spoof",
+  "max_severity": "critical",
+  "finding_count": 1,
+  "findings": [ { "detector": "arp_spoof", "technique": "T1557.002",
+                  "severity": "critical", "evidence": { ... } } ],
+  "sha256": "289004d20c2acd47f5890058b43e5c50ed5cda83f6d7762f583ae2256a40f383",
+  "schema": "mininet-sec-lab/evidence/1"
+}</pre>
+<h3>Verificar a integridade</h3>
+<pre>python3 -c "from lib.evidence import Evidence; \
+print(Evidence.verify('out/case01_arp_spoof.json'))"
+# True  → íntegra ; False → adulterada</pre>
+</section>
+
+<!-- 7 -->
+<section id="problemas">
+<h2><span class="n">7.</span> Solução de problemas</h2>
+<table>
+<tr><th>Sintoma</th><th>Causa provável</th><th>Solução</th></tr>
+<tr><td><code>ModuleNotFoundError: pytest</code></td><td>pytest não instalado</td><td><code>python3 -m pip install pytest</code></td></tr>
+<tr><td><code>[SKIP] … Mininet indisponível</code> no <code>--real</code>/<code>--mnsec</code></td><td>sem Mininet ou sem root</td><td>Use Linux + <code>sudo</code>, ou fique no modo sim</td></tr>
+<tr><td><code>scapy não encontrado</code></td><td>falta scapy p/ ler pcap</td><td><code>pip install scapy</code> (só modo real)</td></tr>
+<tr><td>Permissão negada no modo real</td><td>Mininet exige root</td><td>Rode com <code>sudo</code></td></tr>
+<tr><td><code>.sh</code> não abre com 2 cliques</td><td>sem permissão de execução</td><td><code>chmod +x launchers/*.sh</code></td></tr>
+</table>
+</section>
+
+<!-- 8 -->
+<section id="glossario">
+<h2><span class="n">8.</span> Glossário</h2>
+<dl class="glos">
+  <dt>Mininet / Mininet-Sec</dt><dd>Emuladores que criam uma rede inteira (hosts, switches) dentro de um só Linux. Mininet-Sec adiciona nós e ferramentas de segurança.</dd>
+  <dt>Detector (função pura)</dt><dd>Função que, dada a mesma entrada, sempre produz a mesma saída, sem efeitos externos. Fácil de testar.</dd>
+  <dt>Evento normalizado</dt><dd>Um dicionário padronizado (arp, tcp, dns…) extraído da captura, que o detector consome.</dd>
+  <dt>Finding</dt><dd>Um achado de detecção: o quê, onde, severidade, confiança e a técnica MITRE.</dd>
+  <dt>Evidência selada</dt><dd>Relatório JSON cujo conteúdo é protegido por um hash SHA-256.</dd>
+  <dt>NetworkTAP / porta-espelho (SPAN)</dt><dd>Porta do switch que recebe cópia de todo o tráfego, para o sensor capturar.</dd>
+  <dt>MITRE ATT&CK</dt><dd>Catálogo mundial de técnicas de adversários. Cada case aponta sua técnica (ex.: T1557).</dd>
+  <dt>Half-open</dt><dd>Conexão TCP iniciada (SYN) que nunca completa o handshake — assinatura de SYN flood.</dd>
+  <dt>Modo sim × real</dt><dd>Sim = tráfego sintético, roda em qualquer lugar. Real = tráfego de verdade no Mininet (Linux+root).</dd>
+</dl>
+</section>
+
+<!-- 9 -->
+<section id="tecnica">
+<h2><span class="n">9.</span> Seção técnica — resultado dos testes</h2>
+<p>Validação executada em container de nuvem (Python 3.13, Linux), sem root nem Mininet. Reproduza com os comandos abaixo.</p>
+<div class="grid">
+  <div class="card"><h3>Suíte de detecção</h3>
+    <div class="term"><span class="dim">$ python3 -m pytest tests/ -q</span>
+<span class="ok">.................</span>
+<span class="hl">17 passed in 0.20s</span></div>
+    <p style="font-size:13px;color:var(--muted)">TP (ataque detectado) + FP (benigno não dispara) para cada um dos 6 detectores, mais a verificação da evidência selada.</p>
+  </div>
+  <div class="card"><h3>Execução dos cases</h3>
+    <div class="term"><span class="dim">$ python3 cases/runner.py</span>
+<span class="ok">[PASS]</span> case01_arp_spoof   <span class="cr">critical</span>
+<span class="ok">[PASS]</span> case02_rogue_dhcp  <span class="cr">critical</span>
+<span class="ok">[PASS]</span> case03_syn_flood   <span class="hl">high</span>
+<span class="ok">[PASS]</span> case04_port_scan   <span class="hl">medium</span>
+<span class="ok">[PASS]</span> case05_ssh_bruteforce <span class="cr">critical</span>
+<span class="ok">[PASS]</span> case06_dns_spoof   <span class="hl">high</span>
+<span class="hl">6/6 PASS</span></div>
+  </div>
+</div>
+<table>
+<tr><th>Item</th><th>Resultado</th></tr>
+<tr><td>Testes unitários de detecção</td><td><span class="pill ok">17/17 passed</span></td></tr>
+<tr><td>Cases (modo sim)</td><td><span class="pill ok">6/6 PASS</span></td></tr>
+<tr><td>Integridade das evidências (SHA-256)</td><td><span class="pill ok">6/6 verify=True</span></td></tr>
+<tr><td>Ambiente</td><td>container de nuvem, Python 3.13, sem root/Mininet</td></tr>
+</table>
+<div class="note">Relatório legível por máquina em <code>out/relatorio_testes_nuvem.json</code> e <code>out/runner_summary.json</code>.</div>
+</section>
+
+<p style="margin-top:40px;color:var(--muted);font-size:13px;border-top:1px solid var(--line);padding-top:16px">
+mininet-sec-lab · licença MIT · suplemento ao Mininet-Sec 1.2.0
+(<code>github.com/mininet-sec/mininet-sec</code>, <code>zenodo.org/records/22124731</code>).
+Autor: Deivison Lourenço. Ver <code>RELATED.md</code> e <code>CITATION.cff</code>.
+</p>
+</div>
+
+<button class="themebtn" onclick="var r=document.documentElement;var d=r.getAttribute('data-theme')==='dark';r.setAttribute('data-theme',d?'light':'dark')">🌓 tema</button>
+<script>
+document.querySelectorAll('.tabs button').forEach(function(b){
+  b.addEventListener('click',function(){
+    var p=b.closest('section');
+    p.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
+    p.querySelectorAll('.tabpane').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    p.querySelector('#'+b.dataset.tab).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

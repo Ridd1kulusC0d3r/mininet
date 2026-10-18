@@ -69,6 +69,13 @@ docker run --rm -it --privileged -v /lib/modules:/lib/modules \
 # ou instalação por fonte: ver https://github.com/mininet-sec/mininet-sec
 ```
 
+## Manual e lançadores
+
+- **Manual ilustrado:** `docs/manual.html` — guia completo (instalação por SO em
+  abas, uso guiado com saídas anotadas, diagramas, glossário, seção técnica).
+- **Lançadores de dois cliques:** `launchers/run-linux.sh` (Linux/macOS),
+  `launchers/run-windows.bat` (Windows) — rodam pytest + os 6 cases em modo sim.
+
 ## Modo sim (padrão — sem root)
 
 ```bash

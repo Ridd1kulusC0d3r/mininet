@@ -2,6 +2,11 @@
 
 Uma ação por vez. Não pule etapas.
 
+> 📖 **Manual ilustrado completo:** abra `docs/manual.html` no navegador
+> (instalação por SO, uso guiado, diagramas, glossário e resultado dos testes).
+> ⚡ **Dois cliques:** `launchers/run-linux.sh` (Linux/macOS) ou
+> `launchers/run-windows.bat` (Windows) rodam tudo em modo sim.
+
 ## 1. Ver os cases rodando AGORA (sem instalar nada, sem root)
 
 ```bash

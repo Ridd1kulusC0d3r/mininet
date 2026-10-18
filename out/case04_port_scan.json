@@ -1,7 +1,7 @@
 {
   "case": "case04_port_scan",
-  "started_at": "2026-10-18T16:18:11Z",
-  "finished_at": "2026-10-18T16:18:11Z",
+  "started_at": "2026-10-18T16:58:46Z",
+  "finished_at": "2026-10-18T16:58:46Z",
   "host": "vm",
   "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
   "finding_count": 1,
@@ -44,9 +44,9 @@
         ],
         "rst_received": 60
       },
-      "first_seen": "2026-10-18T16:18:11Z"
+      "first_seen": "2026-10-18T16:58:46Z"
     }
   ],
-  "sha256": "82121512ed200ff49fbeee976665481e19f875f55e0044ed6b7ab26113c44278",
+  "sha256": "c4e1ef5d0cdf569014305f7f74b9dde7333619f4e75db2f85ca382af736d9abc",
   "schema": "mininet-sec-lab/evidence/1"
 }

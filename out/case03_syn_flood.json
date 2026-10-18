@@ -1,7 +1,7 @@
 {
   "case": "case03_syn_flood",
-  "started_at": "2026-10-18T16:18:11Z",
-  "finished_at": "2026-10-18T16:18:11Z",
+  "started_at": "2026-10-18T16:58:46Z",
+  "finished_at": "2026-10-18T16:58:46Z",
   "host": "vm",
   "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
   "finding_count": 1,
@@ -25,9 +25,9 @@
         "distributed": false,
         "window_s": 98.995
       },
-      "first_seen": "2026-10-18T16:18:11Z"
+      "first_seen": "2026-10-18T16:58:46Z"
     }
   ],
-  "sha256": "b2bd5068dfe6ea2ea74035a5f1034117a352b96ba963a8631c3134c5fabcc8cd",
+  "sha256": "ca5faebbf46f309372e5eddf49320ed8f99aaf4d98dff3b404310d23b21f613d",
   "schema": "mininet-sec-lab/evidence/1"
 }

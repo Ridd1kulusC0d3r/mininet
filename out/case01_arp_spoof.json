@@ -1,7 +1,7 @@
 {
   "case": "case01_arp_spoof",
-  "started_at": "2026-10-18T16:18:11Z",
-  "finished_at": "2026-10-18T16:18:11Z",
+  "started_at": "2026-10-18T16:58:46Z",
+  "finished_at": "2026-10-18T16:58:46Z",
   "host": "vm",
   "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
   "finding_count": 1,
@@ -26,9 +26,9 @@
         "is_gateway": true,
         "reply_count": 4
       },
-      "first_seen": "2026-10-18T16:18:11Z"
+      "first_seen": "2026-10-18T16:58:46Z"
     }
   ],
-  "sha256": "9c1df60a6719a16095176e32ad5c658873de7345f8a5c4560dbc1378461e872b",
+  "sha256": "289004d20c2acd47f5890058b43e5c50ed5cda83f6d7762f583ae2256a40f383",
   "schema": "mininet-sec-lab/evidence/1"
 }

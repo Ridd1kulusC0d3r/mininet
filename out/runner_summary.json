@@ -1,12 +1,49 @@
 {
-  "mode": "mnsec",
-  "total": 1,
-  "passed": 0,
+  "mode": "sim",
+  "total": 6,
+  "passed": 6,
   "results": [
     {
       "case": "case01_arp_spoof",
-      "status": "SKIP",
-      "reason": "Mininet indisponível"
+      "status": "PASS",
+      "findings": 1,
+      "severity": "critical",
+      "technique": "T1557.002"
+    },
+    {
+      "case": "case02_rogue_dhcp",
+      "status": "PASS",
+      "findings": 1,
+      "severity": "critical",
+      "technique": "T1557"
+    },
+    {
+      "case": "case03_syn_flood",
+      "status": "PASS",
+      "findings": 1,
+      "severity": "high",
+      "technique": "T1499.001"
+    },
+    {
+      "case": "case04_port_scan",
+      "status": "PASS",
+      "findings": 1,
+      "severity": "medium",
+      "technique": "T1046"
+    },
+    {
+      "case": "case05_ssh_bruteforce",
+      "status": "PASS",
+      "findings": 1,
+      "severity": "critical",
+      "technique": "T1110.001"
+    },
+    {
+      "case": "case06_dns_spoof",
+      "status": "PASS",
+      "findings": 1,
+      "severity": "high",
+      "technique": "T1557"
     }
   ]
 }
