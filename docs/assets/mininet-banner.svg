@@ -1,24 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1480" height="490" viewBox="0 0 1480 490" role="img" aria-labelledby="title description">
 <title id="title">MININET // SEC LAB — Industrial Emulation Workbench</title>
 <desc id="description">Capa original com identidade cyberindustrial: fundo grafite, circuitos ciano, acentos cobre, diagrama de rede OT e assinatura de pesquisa em emulação.</desc>
-<defs><linearGradient id="base" x2="1" y2=".8"><stop stop-color="#090f19"/><stop offset=".65" stop-color="#132734"/><stop offset="1" stop-color="#07121a"/></linearGradient><linearGradient id="lime" x2="1"><stop stop-color="#65ead9"/><stop offset="1" stop-color="#5b9dbf"/></linearGradient><radialGradient id="blur"><stop stop-color="#30666e" stop-opacity=".65"/><stop offset="1" stop-color="#0b1b27" stop-opacity="0"/></radialGradient><pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#58899b" opacity=".27"/></pattern></defs>
+<defs><linearGradient id="base" x2="1" y2=".8"><stop stop-color="#0A070D"/><stop offset=".65" stop-color="#1F1129"/><stop offset="1" stop-color="#08050B"/></linearGradient><linearGradient id="lime" x2="1"><stop stop-color="#E20AB7"/><stop offset="1" stop-color="#9F65CA"/></linearGradient><radialGradient id="blur"><stop stop-color="#713A80" stop-opacity=".65"/><stop offset="1" stop-color="#13091A" stop-opacity="0"/></radialGradient><pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#67457B" opacity=".27"/></pattern></defs>
 <rect width="1480" height="490" rx="20" fill="url(#base)"/><rect width="1480" height="490" rx="20" fill="url(#dots)"/><circle cx="1180" cy="230" r="380" fill="url(#blur)"/>
-<g fill="none" stroke="#426276" stroke-opacity=".35"><path d="M900 0v490M1030 0v490M1160 0v490M1290 0v490M1420 0v490M800 100h680M800 230h680M800 360h680"/></g>
-<rect x="58" y="54" width="72" height="72" rx="16" fill="#153a43" stroke="#65ead9" stroke-width="2"/><path d="M76 106V74l18 20 18-20v32" stroke="#65ead9" stroke-width="6" fill="none" stroke-linejoin="round"/>
-<text x="148" y="83" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="bold" fill="#9ac5cc" letter-spacing="2">INDEPENDENT CYBERSECURITY RESEARCH</text>
-<text x="148" y="113" font-family="monospace" font-size="15" fill="#67f1de" letter-spacing="2.2">NETWORK EMULATION / DETECTION ENGINEERING</text>
-<text x="56" y="245" font-family="Arial,Helvetica,sans-serif" font-size="112" font-weight="900" letter-spacing="-7" fill="#f1f8fa">MININET</text>
-<text x="56" y="359" font-family="Arial,Helvetica,sans-serif" font-size="97" font-weight="900" letter-spacing="-3" fill="#65ead9">// SEC LAB</text>
-<path d="M61 393h90" stroke="#ffa76d" stroke-width="4"/>
-<text x="60" y="435" font-family="monospace" font-size="15" font-weight="bold" fill="#a3c4cd" letter-spacing="1">EMULATE • OBSERVE • DETECT • VERIFY</text>
-<g font-family="monospace" font-weight="bold" fill="#d4efed">
-<path d="M1083 174L1201 120L1342 190L1230 256L1083 174ZM1083 174L965 260L1083 331L1230 256" fill="none" stroke="#5f8892" stroke-width="3"/>
-<path d="M1230 256L1340 339" stroke="#65ead9" stroke-dasharray="8 8" stroke-width="3"/>
-<g transform="translate(1000 118)"><rect width="158" height="52" rx="8" fill="#1c3644" stroke="#7caeb3"/><text x="14" y="23" font-size="14">HMI / L2</text><text x="14" y="40" font-size="10" fill="#8db8c4">VISIBILITY</text></g>
-<g transform="translate(1220 83)"><rect width="182" height="52" rx="8" fill="#1c3644" stroke="#7caeb3"/><text x="14" y="23" font-size="14">EWS / L2</text><text x="14" y="40" font-size="10" fill="#8db8c4">ENGINEERING</text></g>
-<g transform="translate(1140 218)"><rect width="174" height="68" rx="9" fill="#185158" stroke="#65ead9" stroke-width="2"/><text x="14" y="30" font-size="17">OVS / SPAN</text><text x="14" y="50" font-size="11" fill="#a0ddd7">VIRTUAL SWITCH</text></g>
-<g transform="translate(887 280)"><rect width="180" height="57" rx="8" fill="#372e28" stroke="#ffa76d"/><text x="13" y="24" font-size="14">PLC / MODBUS</text><text x="13" y="43" font-size="10" fill="#efba94">SIMULATED OT</text></g>
-<g transform="translate(1265 330)"><rect width="175" height="65" rx="8" fill="#113c3f" stroke="#65ead9"/><text x="13" y="25" font-size="15">SENSOR</text><text x="13" y="46" font-size="10" fill="#9dd9d0">EVIDENCE ENGINE</text></g></g>
-<rect x="22" y="22" width="1436" height="446" rx="13" fill="none" stroke="#35606a" stroke-opacity=".75"/>
-<text x="1130" y="446" font-family="monospace" font-size="12" letter-spacing="2" fill="#ffb27c">OFFLINE · SYNTHETIC</text>
+<g fill="none" stroke="#5B3F68" stroke-opacity=".35"><path d="M900 0v490M1030 0v490M1160 0v490M1290 0v490M1420 0v490M800 100h680M800 230h680M800 360h680"/></g>
+<rect x="58" y="54" width="72" height="72" rx="16" fill="#2A1636" stroke="#E20AB7" stroke-width="2"/><path d="M76 106V74l18 20 18-20v32" stroke="#E20AB7" stroke-width="6" fill="none" stroke-linejoin="round"/>
+<text x="148" y="83" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="bold" fill="#D7BBE0" letter-spacing="2">INDEPENDENT CYBERSECURITY RESEARCH</text>
+<text x="148" y="113" font-family="monospace" font-size="15" fill="#E20AB7" letter-spacing="2.2">NETWORK EMULATION / DETECTION ENGINEERING</text>
+<text x="56" y="245" font-family="Arial,Helvetica,sans-serif" font-size="112" font-weight="900" letter-spacing="-7" fill="#F5F5F5">MININET</text>
+<text x="56" y="359" font-family="Arial,Helvetica,sans-serif" font-size="97" font-weight="900" letter-spacing="-3" fill="#8815FF">// SEC LAB</text>
+<path d="M61 393h90" stroke="#8815FF" stroke-width="4"/>
+<text x="60" y="435" font-family="monospace" font-size="15" font-weight="bold" fill="#D5BDD8" letter-spacing="1">EMULATE • OBSERVE • DETECT • VERIFY</text>
+<g font-family="monospace" font-weight="bold" fill="#F5F5F5">
+<path d="M1083 174L1201 120L1342 190L1230 256L1083 174ZM1083 174L965 260L1083 331L1230 256" fill="none" stroke="#9564AA" stroke-width="3"/>
+<path d="M1230 256L1340 339" stroke="#E20AB7" stroke-dasharray="8 8" stroke-width="3"/>
+<g transform="translate(1000 118)"><rect width="158" height="52" rx="8" fill="#281636" stroke="#BC8ECA"/><text x="14" y="23" font-size="14">HMI / L2</text><text x="14" y="40" font-size="10" fill="#CCB2D5">VISIBILITY</text></g>
+<g transform="translate(1220 83)"><rect width="182" height="52" rx="8" fill="#281636" stroke="#BC8ECA"/><text x="14" y="23" font-size="14">EWS / L2</text><text x="14" y="40" font-size="10" fill="#CCB2D5">ENGINEERING</text></g>
+<g transform="translate(1140 218)"><rect width="174" height="68" rx="9" fill="#3E2050" stroke="#E20AB7" stroke-width="2"/><text x="14" y="30" font-size="17">OVS / SPAN</text><text x="14" y="50" font-size="11" fill="#E5B1D9">VIRTUAL SWITCH</text></g>
+<g transform="translate(887 280)"><rect width="180" height="57" rx="8" fill="#24162E" stroke="#8815FF"/><text x="13" y="24" font-size="14">PLC / MODBUS</text><text x="13" y="43" font-size="10" fill="#C7A6F1">SIMULATED OT</text></g>
+<g transform="translate(1265 330)"><rect width="175" height="65" rx="8" fill="#211533" stroke="#E20AB7"/><text x="13" y="25" font-size="15">SENSOR</text><text x="13" y="46" font-size="10" fill="#D4A4D2">EVIDENCE ENGINE</text></g></g>
+<rect x="22" y="22" width="1436" height="446" rx="13" fill="none" stroke="#78518C" stroke-opacity=".75"/>
+<text x="1130" y="446" font-family="monospace" font-size="12" letter-spacing="2" fill="#D0A7F7">OFFLINE · SYNTHETIC</text>
 </svg>
