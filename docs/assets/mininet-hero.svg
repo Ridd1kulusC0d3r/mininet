@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520" viewBox="0 0 900 520" role="img" aria-labelledby="t d">
+<title id="t">Mininet Sec Lab · Industrial Emulation Control Room</title><desc id="d">Visão abstrata original de uma rede OT emulada conectando HMI, estação de engenharia, switch virtual, PLC, OPC UA e sensor de observação. Diagrama ilustrativo, sem dados reais.</desc>
+<defs>
+<linearGradient id="bg" x2="1" y2="1"><stop stop-color="#101f2e"/><stop offset="1" stop-color="#08121c"/></linearGradient>
+<linearGradient id="highlight" x2="1" y2="0"><stop stop-color="#65ead9"/><stop offset="1" stop-color="#6eacdf"/></linearGradient>
+<pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><path d="M28 0H0V28" fill="none" stroke="#304454" stroke-width=".7" opacity=".55"/></pattern>
+<filter id="glow"><feGaussianBlur stdDeviation="4"/></filter>
+</defs>
+<rect width="900" height="520" rx="12" fill="url(#bg)"/><rect width="900" height="520" fill="url(#grid)" opacity=".52"/>
+<g fill="none" stroke="#324c5d" stroke-width="1"><path d="M24 75h852M24 453h852"/><path d="M27 75v378M875 75v378"/></g>
+<text x="32" y="38" fill="#65ead9" font-size="13" font-family="monospace" font-weight="bold" letter-spacing="2.4">CELL / OT-01</text>
+<text x="650" y="38" fill="#7896a6" font-size="11" font-family="monospace" letter-spacing="1.2">VISUAL SIMULATION</text>
+<rect x="43" y="98" width="812" height="321" rx="15" fill="#122434" fill-opacity=".4" stroke="#406076" stroke-dasharray="6 10"/>
+<text x="68" y="125" fill="#729aab" font-size="11" font-family="monospace" letter-spacing="2">OT CELL / L1–L2</text>
+<g stroke="#65ead9" fill="none" stroke-width="3" opacity=".1" filter="url(#glow)"><path d="M450 259L170 188M450 259L735 188M450 259L166 343M450 259L727 343M450 259L450 380"/></g>
+<g stroke="#618293" fill="none" stroke-width="2.5"><path d="M450 259L170 188M450 259L735 188M450 259L166 343M450 259L727 343"/></g>
+<path d="M450 259L450 380" stroke="#65ead9" stroke-width="2.6" stroke-dasharray="8 7"/>
+<path d="M450 259L735 188" stroke="#65ead9" stroke-width="2.5" stroke-dasharray="3 16" opacity=".8"/>
+<path d="M450 259L166 343" stroke="#ffa76d" stroke-width="2.5" stroke-dasharray="3 14" opacity=".85"/>
+<g transform="translate(65 151)">
+<rect width="205" height="82" rx="9" fill="#112d3b" stroke="#6b9aab" stroke-width="1.6"/><path d="M0 23h205" stroke="#2d5060"/><circle cx="17" cy="12" r="4" fill="#65ead9"/><text x="30" y="17" fill="#93b5bd" font-size="11" font-family="monospace">HMI / SCADA</text><text x="17" y="53" fill="#ebf6f6" font-size="17" font-family="Arial" font-weight="bold">HMI-SIM</text><text x="17" y="70" fill="#81aabb" font-size="10" font-family="monospace">10.20.0.10 · L2</text>
+</g>
+<g transform="translate(630 151)">
+<rect width="205" height="82" rx="9" fill="#112d3b" stroke="#6b9aab" stroke-width="1.6"/><path d="M0 23h205" stroke="#2d5060"/><circle cx="17" cy="12" r="4" fill="#65ead9"/><text x="30" y="17" fill="#93b5bd" font-size="11" font-family="monospace">ENGINEERING</text><text x="17" y="53" fill="#ebf6f6" font-size="17" font-family="Arial" font-weight="bold">EWS-SIM</text><text x="17" y="70" fill="#81aabb" font-size="10" font-family="monospace">10.20.0.11 · L2</text>
+</g>
+<g transform="translate(65 306)">
+<rect width="205" height="80" rx="9" fill="#252522" stroke="#c99068" stroke-width="1.7"/><path d="M0 23h205" stroke="#755140"/><circle cx="17" cy="12" r="4" fill="#ffa76d"/><text x="30" y="17" fill="#efb48c" font-size="11" font-family="monospace">CONTROL DEVICE</text><text x="17" y="52" fill="#fff0dd" font-size="17" font-family="Arial" font-weight="bold">PLC / MODBUS</text><text x="17" y="68" fill="#cca988" font-size="10" font-family="monospace">10.20.0.20 · L1</text>
+</g>
+<g transform="translate(630 306)">
+<rect width="205" height="80" rx="9" fill="#112d3b" stroke="#6b9aab" stroke-width="1.6"/><path d="M0 23h205" stroke="#2d5060"/><circle cx="17" cy="12" r="4" fill="#65ead9"/><text x="30" y="17" fill="#93b5bd" font-size="11" font-family="monospace">INDUSTRIAL DATA</text><text x="17" y="52" fill="#ebf6f6" font-size="17" font-family="Arial" font-weight="bold">OPC UA SIM</text><text x="17" y="68" fill="#81aabb" font-size="10" font-family="monospace">10.20.0.30 · L2</text>
+</g>
+<g transform="translate(352 220)">
+<rect width="197" height="79" rx="10" fill="#163e45" stroke="#65ead9" stroke-width="2"/><rect x="12" y="13" width="31" height="22" rx="4" fill="#295b60" stroke="#5dbbb1"/><path d="M19 20h17m-17 7h17" stroke="#a4eade" stroke-width="2"/><text x="53" y="30" fill="#e7ffff" font-size="17" font-family="Arial" font-weight="bold">SWITCH OVS</text><text x="15" y="58" fill="#9bcfc9" font-size="11" font-family="monospace">s_ot / virtual SPAN</text>
+</g>
+<g transform="translate(357 379)">
+<rect width="187" height="53" rx="8" fill="#102c34" stroke="#65ead9" stroke-width="1.5"/><circle cx="23" cy="26" r="8" fill="none" stroke="#65ead9" stroke-width="2"/><circle cx="23" cy="26" r="3" fill="#65ead9"/><text x="44" y="23" fill="#e4ffff" font-size="13" font-family="monospace" font-weight="bold">OT SENSOR</text><text x="44" y="39" fill="#89c6bd" font-size="10" font-family="monospace">EVIDENCE / SHA-256</text>
+</g>
+<g font-family="monospace" font-size="11" font-weight="bold"><text x="32" y="488" fill="#98afbd">ARCHITECTURE CONCEPT · OFFLINE FIXTURES</text><text x="663" y="488" fill="#ffa76d">NOT A LIVE NETWORK</text></g>
+</svg>

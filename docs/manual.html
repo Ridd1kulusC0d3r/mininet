@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Manual — mininet-sec-lab</title>
+<title>Manual | MININET // SEC LAB</title>
 <style>
 :root{
   --bg:#f4f1ea; --ink:#23262b; --muted:#6b6459; --card:#fbfaf6; --line:#d8d2c4;
@@ -76,22 +76,37 @@ svg{max-width:100%;height:auto}
 kbd{background:var(--code);border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:1px 6px;font-size:12px;font-family:ui-monospace,monospace}
 .themebtn{position:fixed;bottom:16px;right:16px;background:var(--card);border:1px solid var(--line);
   border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;color:var(--ink);z-index:60}
+
+/* MININET // SEC LAB — versão v3: instrumentação industrial original */
+:root{--bg:#080f17;--ink:#edf4f7;--muted:#a2b9c7;--card:#111e2b;--line:#2b4050;--accent:#ffa76d;--accent2:#65ead9;--ok:#65ead9;--crit:#ff8a86;--code:#08151f;--top:#294152;--left:#1b3143;--right:#122633;--atop:#b78353;--aleft:#896641;--aright:#604c3a;color-scheme:dark}
+:root:not([data-theme="light"]){--bg:#080f17;--ink:#edf4f7;--muted:#a2b9c7;--card:#111e2b;--line:#2b4050;--accent:#ffa76d;--accent2:#65ead9;--ok:#65ead9;--crit:#ff8a86;--code:#08151f}
+:root[data-theme="light"]{--bg:#f0f6f7;--ink:#152b36;--muted:#4b6472;--card:#fff;--line:#bfd0d7;--accent:#a64d22;--accent2:#176b68;--ok:#137b65;--crit:#bd3f37;--code:#e6f0f3;color-scheme:light}
+header.hero{background:radial-gradient(ellipse at 80% 30%,#28586288,transparent 45%),linear-gradient(130deg,#08121c,#15333d);border-bottom:1px solid #345261;padding:52px 16px}
+header.hero h1{font-size:clamp(30px,5vw,54px);font-weight:900;letter-spacing:-.06em}
+header.hero p{color:#d5e5e9}header.hero .badge{background:#172d38aa;color:#eaf9f8;border:1px solid #54747d;font-family:ui-monospace,monospace}
+nav.toc{background:var(--card);backdrop-filter:blur(12px)}nav.toc a:first-child{color:var(--accent2);font-weight:900}
+.card{box-shadow:0 12px 28px #030e1616}h2{letter-spacing:-.04em}h2 .n{font-family:ui-monospace,monospace}
+pre,.term{border:1px solid var(--line)}.themebtn{box-shadow:0 8px 30px #0004}
+:focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
 </style>
 </head>
 <body>
 <header class="hero"><div class="inner">
-  <h1>mininet-sec-lab</h1>
+  <h1>MININET // SEC LAB</h1>
   <p>Cases de teste de cybersecurity para Mininet / Mininet-Sec, com foco em engenharia de detecção. Ataque isolado no sandbox → detector → evidência selada.</p>
   <div>
-    <span class="badge">6 cases</span>
-    <span class="badge">6 detectores</span>
-    <span class="badge">17 testes verdes</span>
+    <span class="badge">12 cenários / 6 IT + 6 OT</span>
+    <span class="badge">detectores IT + OT</span>
+    <span class="badge">pytest / modo sim</span>
     <span class="badge">evidência SHA-256</span>
     <span class="badge">suplemento ao Mininet-Sec 1.2.0</span>
   </div>
 </div></header>
 
 <nav class="toc">
+  <a href="index.html">↖ PORTAL VISUAL</a> · <a href="IDENTIDADE-VISUAL.md">IDENTIDADE VISUAL</a>
   <a href="#comece">1 · Comece aqui</a>
   <a href="#funciona">2 · Como funciona</a>
   <a href="#instalar">3 · Instalação</a>
@@ -104,13 +119,14 @@ kbd{background:var(--code);border:1px solid var(--line);border-bottom-width:2px;
 </nav>
 
 <div class="wrap">
+<div class="note" style="margin-top:24px"><b>Atualização visual:</b> este manual aprofunda principalmente os casos IT de origem. O laboratório possui também seis cenários industriais (C7–C12). Consulte o <a href="OT-ROADMAP.md">roadmap OT</a> e o <a href="index.html">portal</a>. O portal mostra resultados sintéticos versionados, não telemetria ao vivo.</div>
 
 <!-- 1 -->
 <section id="comece">
 <h2><span class="n">1.</span> Comece aqui — uma ação por vez</h2>
 <p>Não precisa instalar nada para ver funcionando. Se tiver Python 3, você roda os cases em segundos.</p>
 <div class="steps">
-  <div class="step"><b>Veja rodando agora.</b> Dois cliques em <code>launchers/run-linux.sh</code> (Linux/macOS) ou <code>launchers/run-windows.bat</code> (Windows). Ou no terminal: <code>python3 cases/runner.py</code>. Esperado: <span class="pill ok">6/6 PASS</span></div>
+  <div class="step"><b>Veja rodando agora.</b> Dois cliques em <code>launchers/run-linux.sh</code> (Linux/macOS) ou <code>launchers/run-windows.bat</code> (Windows). Ou no terminal: <code>python3 cases/runner.py</code>. Esperado: <span class="pill ok">12/12 PASS</span></div>
   <div class="step"><b>Rode a suíte de testes.</b> <code>python3 -m pytest tests/ -q</code> → <span class="pill ok">17 passed</span></div>
   <div class="step"><b>Entenda.</b> Leia a seção <a href="#funciona">Como funciona</a> e abra <code>docs/lab-architecture.html</code>.</div>
   <div class="step"><b>Rode de verdade (opcional).</b> Num Linux com root: <code>sudo python3 cases/runner.py --mnsec</code>. Veja <a href="#instalar">Instalação</a>.</div>
@@ -183,7 +199,7 @@ cd mininet
 python3 -m pip install pytest
 
 # 3. rodar
-python3 cases/runner.py        # 6 cases, modo sim
+python3 cases/runner.py        # 12 cases, modo sim
 python3 -m pytest tests/ -q    # suíte de detecção</pre>
   <div class="note">No Windows, dois cliques em <code>launchers\run-windows.bat</code> fazem os passos 2 e 3.</div>
 </div>
@@ -239,7 +255,7 @@ wsl --install -d Ubuntu
 <span class="ok">[PASS]</span> case05_ssh_bruteforce — Brute force de SSH
 <span class="ok">[PASS]</span> case06_dns_spoof — DNS spoofing / corrida de resposta
 
-=== <span class="hl">6/6 PASS</span> | resumo em out/runner_summary.json ===            <span class="mk">4</span>
+=== <span class="hl">12/12 PASS</span> | resumo em out/runner_summary.json ===            <span class="mk">4</span>
 </div>
 <ul class="ann">
   <li><span class="mk">1</span> Nome do case e o cenário de ataque que ele exercita.</li>
@@ -251,7 +267,7 @@ wsl --install -d Ubuntu
 <h3>Rodar um case só</h3>
 <pre>python3 cases/runner.py --case case03_syn_flood</pre>
 
-<h3>Os 6 cases</h3>
+<h3>Os 12 cases</h3>
 <table>
 <tr><th>Case</th><th>Cenário</th><th>ATT&CK</th><th>Sinal de detecção</th></tr>
 <tr><td>C1</td><td>ARP spoofing / MITM</td><td>T1557.002</td><td>IP com &gt;1 MAC (pior se gateway)</td></tr>
@@ -366,13 +382,13 @@ print(Evidence.verify('out/case01_arp_spoof.json'))"
 <span class="ok">[PASS]</span> case04_port_scan   <span class="hl">medium</span>
 <span class="ok">[PASS]</span> case05_ssh_bruteforce <span class="cr">critical</span>
 <span class="ok">[PASS]</span> case06_dns_spoof   <span class="hl">high</span>
-<span class="hl">6/6 PASS</span></div>
+<span class="hl">12/12 PASS</span></div>
   </div>
 </div>
 <table>
 <tr><th>Item</th><th>Resultado</th></tr>
 <tr><td>Testes unitários de detecção</td><td><span class="pill ok">17/17 passed</span></td></tr>
-<tr><td>Cases (modo sim)</td><td><span class="pill ok">6/6 PASS</span></td></tr>
+<tr><td>Cases (modo sim)</td><td><span class="pill ok">12/12 PASS</span></td></tr>
 <tr><td>Integridade das evidências (SHA-256)</td><td><span class="pill ok">6/6 verify=True</span></td></tr>
 <tr><td>Ambiente</td><td>container de nuvem, Python 3.13, sem root/Mininet</td></tr>
 </table>

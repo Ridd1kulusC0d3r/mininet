@@ -1,4 +1,8 @@
-# COMECE-AQUI
+# COMECE-AQUI / MININET // SEC LAB
+
+[**Portal visual**](docs/index.html) · [**Manual ilustrado**](docs/manual.html) · [**Célula OT**](docs/OT-ROADMAP.md) · [**Identidade visual**](docs/IDENTIDADE-VISUAL.md)
+
+> O portal funciona como representação interativa de topologias e resultados **sintéticos**; não executa Mininet no navegador e não monitora redes reais.
 
 Uma ação por vez. Não pule etapas.
 
@@ -13,9 +17,9 @@ Uma ação por vez. Não pule etapas.
 python3 cases/runner.py
 ```
 
-Isso executa os 6 cenários em **modo sim** (traces sintéticos) e grava uma
+Isso executa os 12 cenários em **modo sim** (traces sintéticos) e grava uma
 evidência selada por case em `out/`. É a prova de que a lógica de detecção
-funciona. Esperado: `6/6 PASS`.
+funciona. Resultado registrado no snapshot versionado: `12/12 PASS` (a execução local pode variar).
 
 ➡️ **Faça só isso primeiro.** Depois volte aqui.
 
@@ -27,7 +31,7 @@ funciona. Esperado: `6/6 PASS`.
 python3 -m pytest tests/ -v
 ```
 
-Esperado: `17 passed`. Valida verdadeiro-positivo (ataque detectado) e
+Valida os detectores disponíveis e seus casos de teste; confira a contagem exibida pelo pytest. Valida verdadeiro-positivo (ataque detectado) e
 falso-positivo (tráfego benigno não dispara) de cada detector.
 
 ➡️ Rodou verde? Siga para o passo 3.
@@ -49,7 +53,7 @@ seção "Modo real".
 | Pasta       | O que é                                                        |
 |-------------|----------------------------------------------------------------|
 | `lib/`      | Núcleo: detectores (funções puras), sensor, evidência, topo.   |
-| `cases/`    | Os 6 cases + o runner.                                          |
+| `cases/`    | Os 12 cases + o runner.                                          |
 | `tests/`    | Suíte pytest dos detectores (roda em qualquer lugar).          |
 | `out/`      | Saída: evidências seladas e relatórios (gerado ao rodar).      |
 | `docs/`     | Figura da arquitetura e esquema dos eventos.                   |
