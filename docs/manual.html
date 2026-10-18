@@ -77,19 +77,37 @@ kbd{background:var(--code);border:1px solid var(--line);border-bottom-width:2px;
 .themebtn{position:fixed;bottom:16px;right:16px;background:var(--card);border:1px solid var(--line);
   border-radius:999px;padding:8px 14px;font-size:13px;cursor:pointer;color:var(--ink);z-index:60}
 
-/* MININET // SEC LAB — versão v3: instrumentação industrial original */
-:root{--bg:#080f17;--ink:#edf4f7;--muted:#a2b9c7;--card:#111e2b;--line:#2b4050;--accent:#ffa76d;--accent2:#65ead9;--ok:#65ead9;--crit:#ff8a86;--code:#08151f;--top:#294152;--left:#1b3143;--right:#122633;--atop:#b78353;--aleft:#896641;--aright:#604c3a;color-scheme:dark}
-:root:not([data-theme="light"]){--bg:#080f17;--ink:#edf4f7;--muted:#a2b9c7;--card:#111e2b;--line:#2b4050;--accent:#ffa76d;--accent2:#65ead9;--ok:#65ead9;--crit:#ff8a86;--code:#08151f}
-:root[data-theme="light"]{--bg:#f0f6f7;--ink:#152b36;--muted:#4b6472;--card:#fff;--line:#bfd0d7;--accent:#a64d22;--accent2:#176b68;--ok:#137b65;--crit:#bd3f37;--code:#e6f0f3;color-scheme:light}
-header.hero{background:radial-gradient(ellipse at 80% 30%,#28586288,transparent 45%),linear-gradient(130deg,#08121c,#15333d);border-bottom:1px solid #345261;padding:52px 16px}
+/* MININET // SEC LAB — paleta fundamentada no Claroty Brand Identity Guidelines 2026.
+   Cores reproduzidas como valores cromáticos; layout, tipografia e marca originais. */
+:root{
+  --brand-pink:#E20AB7;--brand-purple:#8815FF;--industrial-green:#7B953B;
+  --bg:#08060B;--ink:#F5F5F5;--muted:#DADADA;--card:#1C1124;--line:#5D4167;
+  --accent:#E20AB7;--accent2:#C5A0FF;--ok:#90C95D;--crit:#FF8295;--code:#100B15;
+  --top:#3C2B77;--left:#34204A;--right:#211632;
+  --atop:#9B2480;--aleft:#741F5F;--aright:#3C2B77;
+  color-scheme:dark
+}
+:root:not([data-theme="light"]),:root[data-theme="dark"]{
+  --bg:#08060B;--ink:#F5F5F5;--muted:#DADADA;--card:#1C1124;--line:#5D4167;
+  --accent:#E20AB7;--accent2:#C5A0FF;--ok:#90C95D;--crit:#FF8295;--code:#100B15;
+  --top:#3C2B77;--left:#34204A;--right:#211632;--atop:#9B2480;--aleft:#741F5F;--aright:#3C2B77
+}
+:root[data-theme="light"]{
+  --bg:#F5F5F5;--ink:#000000;--muted:#474747;--card:#FFFFFF;--line:#DADADA;
+  --accent:#9B2480;--accent2:#583996;--ok:#32582A;--crit:#A21D29;--code:#EDE8F2;
+  --top:#8764AB;--left:#D87EB4;--right:#583996;--atop:#D87EB4;--aleft:#9B2480;--aright:#741F5F;
+  color-scheme:light
+}
+header.hero{background:radial-gradient(ellipse at 82% 18%,#8815FF65,transparent 53%),linear-gradient(130deg,#070509,#32133F 65%,#741F5F);border-bottom:1px solid #741F5F;padding:52px 16px}
 header.hero h1{font-size:clamp(30px,5vw,54px);font-weight:900;letter-spacing:-.06em}
-header.hero p{color:#d5e5e9}header.hero .badge{background:#172d38aa;color:#eaf9f8;border:1px solid #54747d;font-family:ui-monospace,monospace}
+header.hero p{color:#F5F5F5}header.hero .badge{background:#1B0E22CC;color:#F5F5F5;border:1px solid #8764AB;font-family:ui-monospace,monospace}
 nav.toc{background:var(--card);backdrop-filter:blur(12px)}nav.toc a:first-child{color:var(--accent2);font-weight:900}
-.card{box-shadow:0 12px 28px #030e1616}h2{letter-spacing:-.04em}h2 .n{font-family:ui-monospace,monospace}
-pre,.term{border:1px solid var(--line)}.themebtn{box-shadow:0 8px 30px #0004}
+.card{box-shadow:0 12px 28px #00000028}h2{letter-spacing:-.04em}h2 .n{font-family:ui-monospace,monospace}
+pre,.term{border:1px solid var(--line)}
+.term .ok{color:#90C95D}.term .cr{color:#FF8295}.term .hl{color:#D87EB4}
+.themebtn{box-shadow:0 8px 30px #00000050}
 :focus-visible{outline:2px solid var(--accent2);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-
 </style>
 </head>
 <body>
