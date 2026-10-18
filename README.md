@@ -1,4 +1,59 @@
-# mininet-sec-lab
+<div align="center">
+
+<a href="docs/index.html"><img src="docs/assets/mininet-banner.svg" width="100%" alt="MININET SEC LAB — Industrial Emulation Workbench, emulação e detecção em redes IT/OT"/></a>
+
+<br>
+
+**EMULATE • OBSERVE • DETECT • VERIFY**
+
+<sub>Laboratório independente de emulação de redes, engenharia de detecção e evidências reproduzíveis.</sub>
+
+[**PORTAL VISUAL**](docs/index.html) · [**COMECE AQUI**](COMECE-AQUI.md) · [**MANUAL INTERATIVO**](docs/manual.html) · [**CENÁRIOS OT**](docs/OT-ROADMAP.md) · [**DESIGN SYSTEM**](docs/IDENTIDADE-VISUAL.md)
+
+</div>
+
+---
+
+> [!IMPORTANT]
+> **Escopo verificável.** Este repositório reúne **12 cenários (6 IT e 6 OT)**. O arquivo [`out/runner_summary.json`](out/runner_summary.json) registra **12/12 PASS em modo `sim`**, usando traces sintéticos. Isso **não** demonstra eficácia em rede industrial real. O [portal visual](docs/index.html) é uma demonstração estática que permite explorar topologias e resultados gravados; não detecta ativos, não executa casos no navegador e não recebe telemetria ao vivo. A execução em Mininet tem requisitos e limitações específicos descritos abaixo.
+
+## 00 / Explore o laboratório
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### ◇ Topologias e contexto
+
+Selecione ativos em duas visões interativas: **IT LAB** e **OT CELL**. Explore switch OVS, estação de engenharia, HMI, PLC/Modbus e sensor SPAN, sempre como **arquitetura didática**.
+
+**[Abrir control room →](docs/index.html)**
+
+</td>
+<td width="50%" valign="top">
+
+### ◈ Cenários e evidência
+
+Filtre os **12 casos** por domínio IT/OT; inspecione técnica referenciada, severidade e achados a partir do **snapshot sintético versionado**.
+
+**[Ver resultados gravados →](out/runner_summary.json)**
+
+</td>
+</tr>
+</table>
+
+<div align="center"><img src="docs/assets/mininet-hero.svg" width="86%" alt="Ilustração original do mapa de uma célula OT emulada, com HMI, EWS, PLC, OPC UA e sensor de observação"/></div>
+
+<details>
+<summary><strong>Como publicar o portal no GitHub Pages</strong></summary>
+
+Após integrar a nova interface à branch `main`, acesse **Settings → Pages → Deploy from a branch**, selecione `main` e a pasta `/docs`. O arquivo `docs/index.html` também pode ser aberto localmente no navegador. A publicação no Pages não é automática.
+
+</details>
+
+---
+
+# mininet-sec-lab · arquitetura, detecção e metodologia
 
 Cases de teste de cybersecurity para **Mininet**, com foco em **engenharia de
 detecção**. Cada case emparelha um ataque executado de forma **isolada no
@@ -95,7 +150,7 @@ docker run --rm -it --privileged -v /lib/modules:/lib/modules \
 - **Manual ilustrado:** `docs/manual.html` — guia completo (instalação por SO em
   abas, uso guiado com saídas anotadas, diagramas, glossário, seção técnica).
 - **Lançadores de dois cliques:** `launchers/run-linux.sh` (Linux/macOS),
-  `launchers/run-windows.bat` (Windows) — rodam pytest + os 6 cases em modo sim.
+  `launchers/run-windows.bat` (Windows) — rodam pytest + os 12 cases em modo sim.
 
 ## Modo sim (padrão — sem root)
 
@@ -168,7 +223,7 @@ mininet-sec-lab/
 ├── COMECE-AQUI.md
 ├── README.md
 ├── lib/           # detectores, sensor, evidência, topo, traces
-├── cases/         # 6 cases + harness + runner
+├── cases/         # 12 cases + harness + runner
 ├── tests/         # pytest dos detectores
 ├── docs/          # figura da arquitetura + esquema de eventos
 └── out/           # evidências e relatórios (gerado)
