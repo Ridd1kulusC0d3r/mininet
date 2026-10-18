@@ -22,7 +22,11 @@ from typing import Callable
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from lib.detectors import DETECTORS                       # noqa: E402
+from lib.ot.detectors import OT_DETECTORS                 # noqa: E402
 from lib.evidence import Evidence                         # noqa: E402
+
+# registro unificado: detectores IT + OT
+ALL_DETECTORS = {**DETECTORS, **OT_DETECTORS}
 
 
 @dataclass
@@ -36,6 +40,7 @@ class CaseSpec:
     # real mode:
     attack_cmd: str = ""               # comando(s) de ataque no sandbox (doc)
     expect_min_findings: int = 1
+    layer: str = "it"                  # "it" (rede) ou "ot" (ICS)
 
 
 def run_case(spec: CaseSpec, mode: str = "sim",
@@ -48,7 +53,16 @@ def run_case(spec: CaseSpec, mode: str = "sim",
           "mnsec" -> Mininet-Sec nativo (lib/topo_mnsec.py, NetworkTAP+captureDir)
     """
     os.makedirs(out_dir, exist_ok=True)
-    detector = DETECTORS[spec.detector]
+    detector = ALL_DETECTORS[spec.detector]
+
+    if mode in ("real", "mnsec") and spec.layer == "ot":
+        # Modo real OT exige extração protocol-aware (Modbus/OPC UA → evento),
+        # p.ex. Zeek/CISA ICSNPP sobre o pcap. É o próximo passo do roadmap
+        # (docs/OT-ROADMAP.md). Até lá, os cases OT validam-se em modo sim/pytest.
+        raise RuntimeError(
+            f"{spec.case_id}: modo '{mode}' OT requer extração protocol-aware "
+            "(Zeek/ICSNPP). Suba a topologia com lib/ot/topology.py + "
+            "services/ e valide a detecção via modo sim/pytest por enquanto.")
 
     if mode == "mnsec":
         events = _run_mnsec(spec)

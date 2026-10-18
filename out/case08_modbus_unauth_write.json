@@ -1,0 +1,35 @@
+{
+  "case": "case08_modbus_unauth_write",
+  "started_at": "2026-10-18T17:12:48Z",
+  "finished_at": "2026-10-18T17:12:48Z",
+  "host": "vm",
+  "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+  "finding_count": 1,
+  "max_severity": "critical",
+  "findings": [
+    {
+      "detector": "modbus_unauth_write",
+      "title": "Escrita Modbus não autorizada de 10.20.0.66 em holding:40001 (100→900) [CRÍTICO]",
+      "severity": "critical",
+      "confidence": 0.92,
+      "technique": "T0836",
+      "src": "10.20.0.66",
+      "dst": "10.20.0.20",
+      "evidence": {
+        "src": "10.20.0.66",
+        "asset_id": "plc1",
+        "object": "holding:40001",
+        "operation": "write_register",
+        "before": 100,
+        "after": 900,
+        "delta": 800,
+        "unauthorized_source": true,
+        "critical_object": true,
+        "maintenance_window": false
+      },
+      "first_seen": "2026-10-18T17:12:48Z"
+    }
+  ],
+  "sha256": "ab36712cdde534887abdc4bd0b447d4929225983598394e9b2e8333f741318ae",
+  "schema": "mininet-sec-lab/evidence/1"
+}

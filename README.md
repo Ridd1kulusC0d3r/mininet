@@ -42,6 +42,27 @@ vêm os eventos.
 | C5 | SSH brute force | T1110.001 | Rajada de falhas de uma origem em janela; sucesso após o surto |
 | C6 | DNS spoofing | T1557 | Respostas conflitantes para o mesmo nome; IP fora do esperado |
 
+### Camada OT/ICS (`lib/ot/`)
+
+Mesma arquitetura (detector puro → finding → evidência), com semântica
+industrial: Modbus, OPC UA, estado de processo, lógica de PLC, alarmes. Cada
+case aponta uma técnica do **MITRE ATT&CK for ICS**. Detalhes e roadmap em
+`docs/OT-ROADMAP.md`.
+
+| Case | Cenário | ATT&CK ICS | Sinal de detecção |
+|------|---------|------------|-------------------|
+| S1 / C7 | Reconhecimento de ativos OT | T0846 | 1 origem tocando muitos ativos/portas/FCs |
+| S2 / C8 | Escrita Modbus não autorizada | T0836/T0831 | write de origem fora da allowlist / objeto crítico (delta físico) |
+| S4 / C9 | Rogue master / rogue EWS | T0848 | master fora da allowlist emitindo comando |
+| S8 / C10 | DoS contra serviço de controle | T0814 | taxa alta na porta 502/2404/4840 + polls falhando |
+| S6 / C11 | OPC UA anônima/insegura | T0836/T0859 | write aceito com auth anônima / security None |
+| S9 / C12 | Perda/Manipulação de visão | T0815 | HMI diverge do processo / telemetria obsoleta |
+
+Os cases OT validam-se em **modo sim** e **pytest** (sem root). O **modo real**
+no Mininet usa `lib/ot/topology.py` (célula `otcell`), `services/` (Modbus/OPC UA)
+e `tools/` (ataque no sandbox); a extração protocol-aware do pcap (Zeek/ICSNPP)
+é o próximo passo — ver `docs/OT-ROADMAP.md`. Deps opcionais em `requirements-ot.txt`.
+
 ## Instalação
 
 Núcleo + testes (qualquer SO com Python 3.10+):

@@ -1,0 +1,8 @@
+# Dependências OPCIONAIS da camada OT — só para o MODO REAL no Mininet.
+# Os detectores e a suíte pytest NÃO dependem delas (stdlib only).
+pymodbus>=3.0      # servidor/cliente Modbus (services/, tools/)
+asyncua>=1.0       # servidor/cliente OPC UA
+pyyaml>=6.0        # política declarativa (allowlist, objetos críticos)
+# datasets/replay (fase S13):
+# pandas>=2.0
+# pyarrow>=14.0

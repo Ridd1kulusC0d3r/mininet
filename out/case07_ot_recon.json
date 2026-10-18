@@ -1,0 +1,50 @@
+{
+  "case": "case07_ot_recon",
+  "started_at": "2026-10-18T17:12:48Z",
+  "finished_at": "2026-10-18T17:12:48Z",
+  "host": "vm",
+  "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+  "finding_count": 1,
+  "max_severity": "medium",
+  "findings": [
+    {
+      "detector": "ot_recon",
+      "title": "Reconhecimento OT de 10.20.0.66 (7 ativos, 15 FCs, 3 portas)",
+      "severity": "medium",
+      "confidence": 0.85,
+      "technique": "T0846",
+      "src": "10.20.0.66",
+      "dst": "",
+      "evidence": {
+        "src": "10.20.0.66",
+        "distinct_assets": 7,
+        "distinct_function_codes": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "ot_ports": [
+          502,
+          2404,
+          4840
+        ],
+        "opcua_nodes": 0
+      },
+      "first_seen": "2026-10-18T17:12:48Z"
+    }
+  ],
+  "sha256": "39553b3078be1aeccaaa6a283c16b7a2341ef5fea2f0d824c2c0d079757d5fa8",
+  "schema": "mininet-sec-lab/evidence/1"
+}

@@ -1,7 +1,7 @@
 {
   "case": "case02_rogue_dhcp",
-  "started_at": "2026-10-18T16:58:46Z",
-  "finished_at": "2026-10-18T16:58:46Z",
+  "started_at": "2026-10-18T17:12:48Z",
+  "finished_at": "2026-10-18T17:12:48Z",
   "host": "vm",
   "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
   "finding_count": 1,
@@ -27,9 +27,9 @@
           "10.0.0.66"
         ]
       },
-      "first_seen": "2026-10-18T16:58:46Z"
+      "first_seen": "2026-10-18T17:12:48Z"
     }
   ],
-  "sha256": "01759b1ff18230ef31103503aee3f9b86007595aac5b470e7822e9e41a55fcb9",
+  "sha256": "ea6b4e7a2e9e62f543ccdc3622fb950ca040a98dc9751540d18bf86667b73396",
   "schema": "mininet-sec-lab/evidence/1"
 }

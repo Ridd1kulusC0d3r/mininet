@@ -1,7 +1,7 @@
 {
   "mode": "sim",
-  "total": 6,
-  "passed": 6,
+  "total": 12,
+  "passed": 12,
   "results": [
     {
       "case": "case01_arp_spoof",
@@ -44,6 +44,48 @@
       "findings": 1,
       "severity": "high",
       "technique": "T1557"
+    },
+    {
+      "case": "case07_ot_recon",
+      "status": "PASS",
+      "findings": 1,
+      "severity": "medium",
+      "technique": "T0846"
+    },
+    {
+      "case": "case08_modbus_unauth_write",
+      "status": "PASS",
+      "findings": 1,
+      "severity": "critical",
+      "technique": "T0836"
+    },
+    {
+      "case": "case09_rogue_master",
+      "status": "PASS",
+      "findings": 1,
+      "severity": "critical",
+      "technique": "T0848"
+    },
+    {
+      "case": "case10_ot_dos",
+      "status": "PASS",
+      "findings": 1,
+      "severity": "critical",
+      "technique": "T0814"
+    },
+    {
+      "case": "case11_opcua_anon_write",
+      "status": "PASS",
+      "findings": 1,
+      "severity": "critical",
+      "technique": "T0836"
+    },
+    {
+      "case": "case12_loss_of_view",
+      "status": "PASS",
+      "findings": 5,
+      "severity": "high",
+      "technique": "T0815"
     }
   ]
 }
