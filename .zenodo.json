@@ -1,0 +1,48 @@
+{
+  "title": "mininet-sec-lab: cases de teste de cybersecurity com foco em deteccao para Mininet-Sec",
+  "description": "Conjunto de 6 cases de teste de cybersecurity para Mininet/Mininet-Sec com foco em engenharia de deteccao. Cada case emparelha um ataque executado de forma isolada no sandbox emulado (ARP spoofing, rogue DHCP, SYN flood, port scan, SSH brute force, DNS spoofing) com um detector escrito como funcao pura sobre eventos de rede normalizados, produzindo evidencia estruturada e selada por SHA-256. Suplemento ao projeto Mininet-Sec.",
+  "upload_type": "software",
+  "license": "MIT",
+  "keywords": [
+    "mininet",
+    "mininet-sec",
+    "network security",
+    "detection engineering",
+    "MITRE ATT&CK",
+    "security training",
+    "OSINT",
+    "threat detection"
+  ],
+  "creators": [
+    {
+      "name": "Lourenco Mendes, Deivison Henrique",
+      "affiliation": "Clavis Seguranca da Informacao"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://github.com/mininet-sec/mininet-sec/tree/1.2.0",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "relation": "isSupplementTo",
+      "identifier": "https://zenodo.org/records/22124731",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "relation": "references",
+      "identifier": "https://github.com/mininet-sec/mininet-sec",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "relation": "references",
+      "identifier": "https://github.com/Mdp11/mn_security",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ]
+}

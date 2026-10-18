@@ -1,0 +1,35 @@
+{
+  "case": "case02_rogue_dhcp",
+  "started_at": "2026-10-18T16:18:11Z",
+  "finished_at": "2026-10-18T16:18:11Z",
+  "host": "vm",
+  "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+  "finding_count": 1,
+  "max_severity": "critical",
+  "findings": [
+    {
+      "detector": "rogue_dhcp",
+      "title": "Servidor DHCP não autorizado 10.0.0.66 respondendo na rede",
+      "severity": "critical",
+      "confidence": 0.9,
+      "technique": "T1557",
+      "src": "10.0.0.66",
+      "dst": "10.0.0.50",
+      "evidence": {
+        "rogue_server_ip": "10.0.0.66",
+        "rogue_server_mac": "00:00:00:00:00:66",
+        "offered_ip": "10.0.0.50",
+        "pushed_gateway": "10.0.0.66",
+        "pushed_dns": "10.0.0.66",
+        "trusted_gateway": "10.0.0.1",
+        "distinct_servers_seen": [
+          "10.0.0.1",
+          "10.0.0.66"
+        ]
+      },
+      "first_seen": "2026-10-18T16:18:11Z"
+    }
+  ],
+  "sha256": "a2c452700b3158d6616eaf7b121eea2212341e8b79533e99afbb22d2ed8fc0ce",
+  "schema": "mininet-sec-lab/evidence/1"
+}

@@ -1,0 +1,33 @@
+{
+  "case": "case03_syn_flood",
+  "started_at": "2026-10-18T16:18:11Z",
+  "finished_at": "2026-10-18T16:18:11Z",
+  "host": "vm",
+  "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+  "finding_count": 1,
+  "max_severity": "high",
+  "findings": [
+    {
+      "detector": "syn_flood",
+      "title": "SYN flood contra 10.0.0.20:80 (100 SYN/s, 2 origens)",
+      "severity": "high",
+      "confidence": 0.9,
+      "technique": "T1499.001",
+      "src": "",
+      "dst": "10.0.0.20:80",
+      "evidence": {
+        "dst_ip": "10.0.0.20",
+        "dst_port": 80,
+        "syn_count": 562,
+        "syn_rate_pps": 100.0,
+        "halfopen_ratio": 1.0,
+        "distinct_sources": 2,
+        "distributed": false,
+        "window_s": 98.995
+      },
+      "first_seen": "2026-10-18T16:18:11Z"
+    }
+  ],
+  "sha256": "b2bd5068dfe6ea2ea74035a5f1034117a352b96ba963a8631c3134c5fabcc8cd",
+  "schema": "mininet-sec-lab/evidence/1"
+}

@@ -1,0 +1,12 @@
+{
+  "mode": "mnsec",
+  "total": 1,
+  "passed": 0,
+  "results": [
+    {
+      "case": "case01_arp_spoof",
+      "status": "SKIP",
+      "reason": "Mininet indisponível"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arquitetura do Lab</title>
+<style>
+:root{
+  --bg:#f4f1ea; --ink:#2b2b2b; --card:#fbfaf6; --line:#3a3a3a;
+  --top:#dcd6c8; --left:#b8b0a0; --right:#9c9484;
+  --atop:#ffd27a; --aleft:#e0a94a; --aright:#c08f38;
+  --cable:#6b7280; --mirror:#c0392b; --node:#2b2b2b; --muted:#7a7366;
+}
+:root:not([data-theme="light"]){ }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171b; --ink:#e7e4dc; --card:#1d2026; --line:#aeb4bf;
+    --top:#5a6170; --left:#3e434e; --right:#2c303a;
+    --atop:#e0a94a; --aleft:#b07e2c; --aright:#7e5a1e;
+    --cable:#8b94a3; --mirror:#ff6b5a; --node:#e7e4dc; --muted:#8b93a0;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171b; --ink:#e7e4dc; --card:#1d2026; --line:#aeb4bf;
+  --top:#5a6170; --left:#3e434e; --right:#2c303a;
+  --atop:#e0a94a; --aleft:#b07e2c; --aright:#7e5a1e;
+  --cable:#8b94a3; --mirror:#ff6b5a; --node:#e7e4dc; --muted:#8b93a0;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+  display:flex;justify-content:center;padding:24px 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  max-width:860px;width:100%;padding:18px 20px 22px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12)}
+.head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.fig{font-weight:700;letter-spacing:.04em;font-size:13px;color:var(--muted)}
+.title{font-weight:700;font-size:17px;text-align:right}
+svg{width:100%;height:auto;display:block;margin:6px 0 2px}
+.f-top{fill:var(--top)} .f-left{fill:var(--left)} .f-right{fill:var(--right)}
+.f-topa{fill:var(--atop)} .f-lefta{fill:var(--aleft)} .f-righta{fill:var(--aright)}
+path[class^="f-"]{stroke:var(--line);stroke-width:1;stroke-linejoin:round}
+.lbl{fill:var(--ink);font-size:10.5px;font-weight:600;text-anchor:middle;
+  paint-order:stroke;stroke:var(--card);stroke-width:2.4px}
+.cable{fill:none;stroke:var(--cable);stroke-width:2.2;stroke-linecap:round}
+.mirror{fill:none;stroke:var(--mirror);stroke-width:2.4;stroke-dasharray:5 4}
+.node{fill:var(--node)}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  margin-top:8px;font-size:12.5px}
+.legend span{display:inline-flex;align-items:center;gap:6px;margin-right:14px}
+.sw{width:12px;height:12px;border-radius:3px;border:1px solid var(--line);
+  display:inline-block}
+.pipe{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);
+  font-size:13px;line-height:1.5}
+.pipe b{color:var(--ink)}
+.chip{display:inline-block;padding:2px 8px;border:1px solid var(--line);
+  border-radius:999px;font-size:12px;margin:0 2px}
+.readout{font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px}
+</style></head>
+<body>
+  <div class="card">
+    <div class="head">
+      <div class="fig">Fig 1</div>
+      <div class="title">mininet-sec-lab — topologia &amp; coleta</div>
+    </div>
+    <svg viewBox="0 0 589 377" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(256.6,50.0)"><path d="M-228.6,110.0 L-228.6,123.2 L0.0,-8.8 L0.0,-22.0 Z" class="f-left"/><path d="M304.8,154.0 L304.8,167.2 L76.2,299.2 L76.2,286.0 Z" class="f-right"/><path d="M0.0,-22.0 L304.8,154.0 L76.2,286.0 L-228.6,110.0 Z" class="f-top"/><path d="M9.5,27.5 Q19.1,17.5 28.6,117.7" class="cable"/><circle cx="9.5" cy="27.5" r="2.3" class="node"/><circle cx="28.6" cy="117.7" r="2.3" class="node"/><path d="M-114.3,99.0 Q-42.9,89.0 28.6,117.7" class="cable"/><circle cx="-114.3" cy="99.0" r="2.3" class="node"/><circle cx="28.6" cy="117.7" r="2.3" class="node"/><path d="M200.1,137.5 Q114.3,127.5 28.6,117.7" class="cable"/><circle cx="200.1" cy="137.5" r="2.3" class="node"/><circle cx="28.6" cy="117.7" r="2.3" class="node"/><path d="M76.2,209.0 Q52.4,199.0 28.6,117.7" class="cable"/><circle cx="76.2" cy="209.0" r="2.3" class="node"/><circle cx="28.6" cy="117.7" r="2.3" class="node"/><path d="M28.6,117.7 Q-16.2,107.7 -61.0,176.0" class="mirror"/><circle cx="28.6" cy="117.7" r="2.3" class="node"/><circle cx="-61.0" cy="176.0" r="2.3" class="node"/><path d="M-36.2,27.5 L-36.2,53.9 L9.5,27.5 L9.5,1.1 Z" class="f-left"/><path d="M55.3,27.5 L55.3,53.9 L9.5,80.3 L9.5,53.9 Z" class="f-right"/><path d="M9.5,1.1 L55.3,27.5 L9.5,53.9 L-36.2,27.5 Z" class="f-top"/><text x="9.5" y="31.5" class="lbl">gateway</text><path d="M-160.0,99.0 L-160.0,125.4 L-114.3,99.0 L-114.3,72.6 Z" class="f-left"/><path d="M-68.6,99.0 L-68.6,125.4 L-114.3,151.8 L-114.3,125.4 Z" class="f-right"/><path d="M-114.3,72.6 L-68.6,99.0 L-114.3,125.4 L-160.0,99.0 Z" class="f-top"/><text x="-114.3" y="103.0" class="lbl">victim</text><path d="M-28.6,117.7 L-28.6,148.5 L28.6,115.5 L28.6,84.7 Z" class="f-left"/><path d="M85.7,117.7 L85.7,148.5 L28.6,181.5 L28.6,150.7 Z" class="f-right"/><path d="M28.6,84.7 L85.7,117.7 L28.6,150.7 L-28.6,117.7 Z" class="f-top"/><text x="28.6" y="121.7" class="lbl">s1</text><path d="M154.3,137.5 L154.3,163.9 L200.1,137.5 L200.1,111.1 Z" class="f-left"/><path d="M245.8,137.5 L245.8,163.9 L200.1,190.3 L200.1,163.9 Z" class="f-right"/><path d="M200.1,111.1 L245.8,137.5 L200.1,163.9 L154.3,137.5 Z" class="f-top"/><text x="200.1" y="141.5" class="lbl">server</text><path d="M-102.9,171.6 L-102.9,195.8 L-68.6,176.0 L-68.6,151.8 Z" class="f-left"/><path d="M-19.1,180.4 L-19.1,204.6 L-53.3,224.4 L-53.3,200.2 Z" class="f-right"/><path d="M-68.6,151.8 L-19.1,180.4 L-53.3,200.2 L-102.9,171.6 Z" class="f-top"/><text x="-61.0" y="180.0" class="lbl">sensor</text><path d="M30.5,209.0 L30.5,235.4 L76.2,209.0 L76.2,182.6 Z" class="f-lefta"/><path d="M121.9,209.0 L121.9,235.4 L76.2,261.8 L76.2,235.4 Z" class="f-righta"/><path d="M76.2,182.6 L121.9,209.0 L76.2,235.4 L30.5,209.0 Z" class="f-topa"/><text x="76.2" y="213.0" class="lbl">attacker</text></g>
+</svg>
+    <div class="foot">
+      <div class="legend">
+        <span><i class="sw" style="background:var(--top)"></i>host / switch</span>
+        <span><i class="sw" style="background:var(--atop)"></i>atacante</span>
+        <span><i class="sw" style="background:var(--cable)"></i>enlace</span>
+        <span><i class="sw" style="background:var(--mirror)"></i>espelho (SPAN) → sensor</span>
+      </div>
+      <div class="readout">6 cases · 6 detectores · evidência selada SHA-256</div>
+    </div>
+    <div class="pipe">
+      <b>Fluxo de detecção:</b>
+      <span class="chip">captura no sensor</span> →
+      <span class="chip">evento normalizado</span> →
+      <span class="chip">detector (função pura)</span> →
+      <span class="chip">Finding</span> →
+      <span class="chip">Evidence selada</span><br>
+      O <b>sensor</b> fica numa porta-espelho do <b>s1</b>: enxerga todo o
+      segmento. O ataque do <b>atacante</b> roda isolado no sandbox; o mesmo
+      detector que você testa com <code>pytest</code> processa a captura real.
+    </div>
+  </div>
+</body></html>

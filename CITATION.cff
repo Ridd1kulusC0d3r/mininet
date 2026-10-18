@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "Se usar este material, por favor cite-o."
+title: "mininet-sec-lab: cases de teste de cybersecurity com foco em detecção para Mininet-Sec"
+authors:
+  - family-names: "Lourenço Mendes"
+    given-names: "Deivison Henrique"
+    alias: "Deivison Lourenço"
+    affiliation: "Clavis Segurança da Informação"
+version: 0.1.0
+date-released: 2026-10-18
+license: MIT
+keywords:
+  - mininet
+  - mininet-sec
+  - network security
+  - detection engineering
+  - MITRE ATT&CK
+  - security training
+references:
+  - type: software
+    title: "Mininet-Sec (isSupplementTo)"
+    notes: "Este trabalho é um suplemento ao Mininet-Sec 1.2.0."
+    repository-code: "https://github.com/mininet-sec/mininet-sec/tree/1.2.0"
+    url: "https://github.com/mininet-sec/mininet-sec"
+  - type: software
+    title: "Mininet-Sec — registro Zenodo"
+    url: "https://zenodo.org/records/22124731"
+  - type: software
+    title: "mn_security — Exploiting virtual networks for security training"
+    url: "https://github.com/Mdp11/mn_security"
+  - type: article
+    title: "Artigo SBSeg (Estendido) relacionado"
+    url: "https://sol.sbc.org.br/index.php/sbseg_estendido/article/view/30127"

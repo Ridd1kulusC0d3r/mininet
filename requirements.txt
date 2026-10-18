@@ -1,0 +1,4 @@
+# Núcleo e testes não exigem nada além da stdlib + pytest.
+pytest>=7.0
+# Opcional: só para ler pcap no modo real (Mininet).
+# scapy>=2.5

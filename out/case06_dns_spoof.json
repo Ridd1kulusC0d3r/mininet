@@ -1,0 +1,44 @@
+{
+  "case": "case06_dns_spoof",
+  "started_at": "2026-10-18T16:18:11Z",
+  "finished_at": "2026-10-18T16:18:11Z",
+  "host": "vm",
+  "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+  "finding_count": 1,
+  "max_severity": "high",
+  "findings": [
+    {
+      "detector": "dns_spoof",
+      "title": "Respostas DNS conflitantes para banco.example.com (2 conjuntos de IP, 2 respondedores)",
+      "severity": "high",
+      "confidence": 0.9,
+      "technique": "T1557",
+      "src": "",
+      "dst": "banco.example.com",
+      "evidence": {
+        "qname": "banco.example.com",
+        "answer_sets": [
+          [
+            "200.147.100.10"
+          ],
+          [
+            "6.6.6.6"
+          ]
+        ],
+        "responders": [
+          "10.0.0.1",
+          "10.0.0.66"
+        ],
+        "expected": [
+          "200.147.100.10"
+        ],
+        "rogue_answer": true,
+        "unsolicited": false,
+        "response_count": 2
+      },
+      "first_seen": "2026-10-18T16:18:11Z"
+    }
+  ],
+  "sha256": "85b47b35250e43b69eae632a90f211fd133646b6b3c8379db8d08cb1e0b5cb37",
+  "schema": "mininet-sec-lab/evidence/1"
+}

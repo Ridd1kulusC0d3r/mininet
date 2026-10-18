@@ -1,0 +1,9 @@
+{
+  "suite": "tests/test_detectors.py",
+  "run_at": "2026-10-18T16:07:01Z",
+  "environment": "cloud container (sem root/Mininet)",
+  "python": "3.13.16",
+  "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+  "summary": "17 passed in 0.03s",
+  "note": "Valida a lógica de detecção (TP/FP) de forma determinística."
+}
