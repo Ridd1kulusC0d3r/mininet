@@ -1,9 +1,9 @@
 {
   "case": "case05_ssh_bruteforce",
-  "started_at": "2026-10-18T17:22:34Z",
-  "finished_at": "2026-10-18T17:22:34Z",
+  "started_at": "2026-10-23T00:39:45Z",
+  "finished_at": "2026-10-23T00:39:45Z",
   "host": "vm",
-  "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+  "platform": "Linux-6.18.44-fc-v140-x86_64-with-glibc2.39",
   "finding_count": 1,
   "max_severity": "critical",
   "findings": [
@@ -31,9 +31,9 @@
         "distinct_users": 5,
         "success_after_burst": true
       },
-      "first_seen": "2026-10-18T17:22:34Z"
+      "first_seen": "2026-10-23T00:39:45Z"
     }
   ],
-  "sha256": "48e392c4eafc33958f843b481076e9733ad1547b7f444a5a5293e421a6150021",
+  "sha256": "5d2545aae24893b5b2e0adb03d186bd52db70b558e373ef0a1f5514c4b4f1e26",
   "schema": "mininet-sec-lab/evidence/1"
 }

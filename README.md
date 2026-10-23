@@ -147,6 +147,24 @@ docker run --rm -it --privileged -v /lib/modules:/lib/modules \
 # ou instalação por fonte: ver https://github.com/mininet-sec/mininet-sec
 ```
 
+## Gerador de cases (milhares, data-driven)
+
+Além dos 12 cases `.py` curados, há um **gerador**: 50 cenários-template
+(`scenarios/catalog.py`) × grades de parâmetros → **~2.700 cases concretos** em
+`cases/generated/cases.jsonl`, cada um mapeado ao MITRE ATT&CK (ICS v20 /
+Enterprise) e validado por detector. Detalhes e a tabela dos 50 cenários em
+`docs/CENARIOS.md`.
+
+```bash
+python3 cases/generate.py            # expande catálogo → cases.jsonl + stats
+python3 cases/validate_generated.py  # valida TODOS → out/generated_report.json
+python3 -m pytest tests/test_generated.py   # amostra representativa
+```
+
+Cobertura: 4 protocolos OT (Modbus, DNP3, S7comm, IEC-104) + camada IT,
+14 técnicas ATT&CK distintas. Detectores genéricos multi-protocolo em
+`lib/ot/generic.py`.
+
 ## Manual e lançadores
 
 - **Manual ilustrado:** `docs/manual.html` — guia completo (instalação por SO em

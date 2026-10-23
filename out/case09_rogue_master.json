@@ -1,9 +1,9 @@
 {
   "case": "case09_rogue_master",
-  "started_at": "2026-10-18T17:22:34Z",
-  "finished_at": "2026-10-18T17:22:34Z",
+  "started_at": "2026-10-23T00:39:45Z",
+  "finished_at": "2026-10-23T00:39:45Z",
   "host": "vm",
-  "platform": "Linux-6.18.44-fc-v139-x86_64-with-glibc2.39",
+  "platform": "Linux-6.18.44-fc-v140-x86_64-with-glibc2.39",
   "finding_count": 1,
   "max_severity": "critical",
   "findings": [
@@ -27,9 +27,9 @@
           "10.20.0.11"
         ]
       },
-      "first_seen": "2026-10-18T17:22:34Z"
+      "first_seen": "2026-10-23T00:39:45Z"
     }
   ],
-  "sha256": "1d9c4edbff0860d0e9ed6020ebc1db781337efbfba455039dddc57c2df6f2fbf",
+  "sha256": "928d407e2f903f207356595d62ec17e62566c2816cc5e6ca4ab8e6e75f08a77e",
   "schema": "mininet-sec-lab/evidence/1"
 }
